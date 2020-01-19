@@ -1,0 +1,186 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?kx8vzn');
+  src:  url('fonts/icomoon.eot?kx8vzn#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?kx8vzn') format('truetype'),
+    url('fonts/icomoon.woff?kx8vzn') format('woff'),
+    url('fonts/icomoon.svg?kx8vzn#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Menu-2:before {
+  content: "\e934";
+}
+.icon-Edit:before {
+  content: "\e931";
+}
+.icon-Pen:before {
+  content: "\e932";
+}
+.icon-Menu:before {
+  content: "\e933";
+}
+.icon-Fleche:before {
+  content: "\e900";
+}
+.icon-Moins:before {
+  content: "\e901";
+}
+.icon-Plus:before {
+  content: "\e902";
+}
+.icon-Map:before {
+  content: "\e903";
+}
+.icon-Science:before {
+  content: "\e904";
+}
+.icon-Delete:before {
+  content: "\e905";
+}
+.icon-Plus-2:before {
+  content: "\e906";
+}
+.icon-Continue:before {
+  content: "\e907";
+}
+.icon-Next:before {
+  content: "\e908";
+}
+.icon-Texting:before {
+  content: "\e909";
+}
+.icon-Calendar:before {
+  content: "\e90a";
+}
+.icon-Calendar-2:before {
+  content: "\e90b";
+}
+.icon-Calendar-3:before {
+  content: "\e90c";
+}
+.icon-Person:before {
+  content: "\e90d";
+}
+.icon-User:before {
+  content: "\e90e";
+}
+.icon-Group:before {
+  content: "\e90f";
+}
+.icon-Adjust:before {
+  content: "\e910";
+}
+.icon-Diagram:before {
+  content: "\e911";
+}
+.icon-Search:before {
+  content: "\e912";
+}
+.icon-Won:before {
+  content: "\e913";
+}
+.icon-Won-2:before {
+  content: "\e914";
+}
+.icon-Done:before {
+  content: "\e915";
+}
+.icon-Group-2:before {
+  content: "\e916";
+}
+.icon-Law:before {
+  content: "\e917";
+}
+.icon-Law-2:before {
+  content: "\e918";
+}
+.icon-Law-3:before {
+  content: "\e919";
+}
+.icon-School:before {
+  content: "\e91a";
+}
+.icon-Train:before {
+  content: "\e91b";
+}
+.icon-Station:before {
+  content: "\e91c";
+}
+.icon-Radioactive:before {
+  content: "\e91d";
+}
+.icon-Bomb:before {
+  content: "\e91e";
+}
+.icon-Nuclear:before {
+  content: "\e91f";
+}
+.icon-Missile:before {
+  content: "\e920";
+}
+.icon-Harbour:before {
+  content: "\e921";
+}
+.icon-Mountain:before {
+  content: "\e922";
+}
+.icon-Mountain-2:before {
+  content: "\e923";
+}
+.icon-Forest:before {
+  content: "\e924";
+}
+.icon-Country:before {
+  content: "\e925";
+}
+.icon-Culture:before {
+  content: "\e926";
+}
+.icon-Euro:before {
+  content: "\e927";
+}
+.icon-Wheat:before {
+  content: "\e928";
+}
+.icon-Army:before {
+  content: "\e929";
+}
+.icon-Work:before {
+  content: "\e92a";
+}
+.icon-Rail:before {
+  content: "\e92b";
+}
+.icon-Cross:before {
+  content: "\e92c";
+}
+.icon-Education:before {
+  content: "\e92d";
+}
+.icon-Hospital:before {
+  content: "\e92e";
+}
+.icon-Lightning:before {
+  content: "\e92f";
+}
+.icon-Happy:before {
+  content: "\e930";
+}

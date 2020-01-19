@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StateUser{% endblock %}
+
+{% block body %}
+    <h1>StateUser</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ state_user.id }}</td>
+            </tr>
+            <tr>
+                <th>DateCreate</th>
+                <td>{{ state_user.dateCreate ? state_user.dateCreate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('state_user_index') }}">back to list</a>
+
+    <a href="{{ path('state_user_edit', {'id': state_user.id}) }}">edit</a>
+
+    {{ include('state_user/_delete_form.html.twig') }}
+{% endblock %}

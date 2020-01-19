@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StateUser index{% endblock %}
+
+{% block body %}
+    <h1>Nationality</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateCreate</th>
+                <th>User</th>
+                <th>State</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for state_user in state_users %}
+            <tr>
+                <td>{{ state_user.id }}</td>
+                <td>{{ state_user.dateCreate ? state_user.dateCreate|date('Y-m-d H:i:s') : '' }}</td>
+                <td><a href="/user/{{ state_user.user.id}}"><span class="icon-Person"></span> {{ state_user.user.username}}</a></td>
+                <td><a href="/state/{{ state_user.state.id}}"><span class="icon-Country"></span> {{ state_user.state.name}}</a></td>
+                <td>
+                    <a href="{{ path('state_user_show', {'id': state_user.id}) }}">show</a>
+                    <a href="{{ path('state_user_edit', {'id': state_user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('state_user_new') }}">Create new</a>
+{% endblock %}

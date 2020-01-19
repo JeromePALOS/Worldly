@@ -1,0 +1,164 @@
+
+
+
+body {
+    font-family: "Open Sans", Arial, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    /*background-color: #3c4a54;#fafafa;*/
+    position: relative;
+}
+
+nav{
+    float:left;
+}
+
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 6rem;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    font-size: 20px;
+    background-color: #232c32; /*#3c4a54;*/
+    color: #88959e;
+    box-shadow: 2px 0px 2px black;
+}
+
+
+
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+    overflow-y: auto;
+}
+
+.menu::-webkit-scrollbar {
+    width: 1.1rem;
+}
+
+.menu::-webkit-scrollbar-track {
+    background-color: #3c4a54;
+}
+
+.menu::-webkit-scrollbar-thumb {
+    background-color: #22313b;
+    border-radius: 0.3rem;
+    border: 0.2rem solid #3c4a54;
+}
+
+
+
+
+.menu-group {
+    margin-bottom: 1.8rem;
+}
+
+.menu-group:last-of-type {
+    margin-bottom: 1.8rem;
+}
+
+.menu-top {
+    font-size: 2.4rem;
+    box-shadow: 0px 2px 2px 0px black;
+    z-index: 1;
+}
+
+.menu-bottom {
+    font-size: 2.4rem;
+    box-shadow: 0 -0.2rem 0.2rem #36424b;
+    z-index: 1;
+}
+
+
+
+
+.menu-item {
+    height: 4rem;
+    flex-shrink: 0;
+    width: 100%;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.menu-item:hover {
+    background-color: #36424b;
+}
+
+.menu-item.current {
+    background-color: #0c1216;/*#22313b;*/
+    color: #fff;
+}
+
+.menu-icon{
+    font-size: 2em;
+    color: #fff;
+    line-height: 1.5;
+    
+}
+.menu-logo{
+    height: 7rem;
+}
+.menu-icon-logo{
+    font-size: 2em;
+    color: #fff;
+    line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+/*
+
+The following code will only run if your browser supports CSS grid.
+
+Remove or comment-out the code block below to see how the browser will fall-back to flexbox styling. 
+
+
+@supports (display: grid) {
+    body {
+        display: grid;
+        grid-template-columns: 6rem 1fr;
+    }
+
+    .main-content {
+        display: grid;
+        grid-template-rows: 6rem auto 1fr;
+    }
+
+    .masthead {
+        display: grid;
+        grid-template-columns: auto minmax(19.2rem, 1fr) auto;
+        grid-column-gap: 1.6rem;
+    }
+
+    .side-bar {
+        display: grid;
+        grid-template-rows: auto minmax(auto, 1fr) auto;
+    }
+
+    .controls-menu {
+        display: grid;
+        grid-row-gap: 1.8rem;
+        align-content: start;
+    }
+}

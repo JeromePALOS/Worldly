@@ -1,0 +1,25 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+
+
+state-create:
+  path: /state/create
+  controller: App\Controller\StateController::createState
+
+state-view:
+  path: /state/view/{id}
+  controller: App\Controller\StateController::viewState
+
+state-list:
+  path: /state/liste
+  controller: App\Controller\StateController::listState
+
+state-delete:
+  path: /state/delete/{id}
+  controller: App\Controller\StateController::deleteState
+
+state-update:
+  path: /state/update/{id}
+  controller: App\Controller\StateController::updateState
