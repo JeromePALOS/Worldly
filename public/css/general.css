@@ -2,6 +2,10 @@
     color: white;
 }
 
+option, input{
+    color:black;
+}
+
 body{
         background-color: #3c4a54;
 }
@@ -19,8 +23,32 @@ input[type=color]{
     width: 5em;
 }
 
-button{
-    border: 1px solid black;
-    padding: 2px 2px 2px 2px;
-    
+.btn-action{
+    background:    #232c32;
+    border-radius: 4px;
+    padding:       4px 60px 4px 60px;
+    color:         #ffffff;
+    display:       inline-block;
+    font:          normal 22px/1 "Calibri", sans-serif;
+    text-align:    center;
+    border:        0;      
+    box-shadow: 0px 1px 1px 0px black;
+    border: 1px solid black; 
 }
+.btn-action:hover{ 
+    transition: 1s;
+    padding:       4px 30px 4px 90px;
+}
+.btn-action > .icon{
+
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.btn-form{
+    position:absolute;
+    right: 15px;
+    margin-top: 15px;
+}
+
