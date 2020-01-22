@@ -1,0 +1,223 @@
+
+<script type="text/javascript" src="./stuquery.min.js"></script>
+<script type="text/javascript" src="./stuquery.hexmap.js"></script>
+<link rel="stylesheet" href="./stuquery.hexmap.css">
+
+<style>.ex-8 {
+	background-color: #66bbe2;
+	padding: 6% 10%;
+	margin: auto;
+	/*clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);*/
+}
+.token {
+	font-family: serif;
+	border-radius: 100%;
+	background-color: wheat;
+	width: 4em;
+	height: 4em;
+	color: black;
+	display: table-cell;
+	vertical-align: middle;
+}
+.token.token-red { color: crimson; }
+.token .id, .token .odds { font-size: 0.5em; }
+.token .dice { font-size: 2em; }
+.hills { background-color: #c8906e; }
+.pasture { background-color: #b5c881; }
+.mountains { background-color: #778088; }
+.fields { background-color: #e9b66c; }
+.forest { background-color: #55855f; }
+.desert { background-color: #f5dcad; }
+
+.border{      
+    position:absolute;
+    background-color:red;
+    width:100%;
+    height:100%;
+}
+    
+    
+
+
+
+
+
+
+
+
+
+#message-8 {
+	position: relative;
+	display: inline-block;
+	left: 50%;
+	transform: translate3D(-50%,0,0);
+	background: black;
+	color: white;
+	padding: 0.25em 0.5em;
+	float: left;
+	z-index: 10;
+}
+.ex8 .hex {
+	cursor: pointer;
+}
+.ex8 .hex:hover .hexinner, 
+.ex8 .hex:focus .hexinner {
+	background: black!important;
+	color: white;
+}
+
+
+
+
+
+
+
+
+
+
+</style>
+
+
+<div id="message-8">Click or hover on a hex</div>
+
+
+<div id="hexmap-8" class="ex-8">
+<code>
+{
+	"layout":"odd-r",
+	"hexes": {
+		"A":{"n":"11111111111111111111111111111","q":0,"r":0,"dice":5,"type":"mountains"},
+		"B":{"n":"B","q":1,"r":0,"dice":2,"type":"fields"},
+		"C":{"n":"C","q":2,"r":0,"dice":6,"type":"forest"},
+		"D":{"n":"D","q":2,"r":1,"dice":3,"type":"mountains"},
+		"E":{"n":"E","q":3,"r":2,"dice":8,"type":"fields"},
+		"F":{"n":"F","q":2,"r":3,"dice":10,"type":"pasture"},
+		"G":{"n":"G","q":2,"r":4,"dice":9,"type":"fields"},
+		"H":{"n":"H","q":1,"r":4,"dice":12,"type":"pasture"},
+		"I":{"n":"I","q":0,"r":4,"dice":11,"type":"forest"},
+		"J":{"n":"J","q":-1,"r":3,"dice":4,"type":"hills"},
+		"Robber":{"n":"Robber","q":-1,"r":2,"dice":7,"type":"desert"},
+		"K":{"n":"K","q":-1,"r":1,"dice":8,"type":"hills"},
+		"L":{"n":"L","q":0,"r":1,"dice":10,"type":"pasture"},
+		"M":{"n":"M","q":1,"r":1,"dice":9,"type":"pasture"},
+		"N":{"n":"N","q":2,"r":2,"dice":4,"type":"forest"},
+		"O":{"n":"O","q":1,"r":3,"dice":5,"type":"hills"},
+		"P":{"n":"P","q":0,"r":3,"dice":6,"type":"mountains"},
+		"Q":{"n":"Q","q":0,"r":2,"dice":3,"type":"forest"},
+		"R":{"n":"R","q":1,"r":2,"dice":11,"type":"fields"}
+		
+	}
+}
+</code>
+</div>
+<div style="text-align:center;margin-top:1em;">
+	<button id="button-8-terrain">Randomise terrain</button>
+</div>
+
+
+
+
+
+<script>
+
+//contour region
+    //
+    
+S(document).ready(function(){
+	var hexmap = S.hexmap('hexmap-8');
+	hexmap.positionHexes().resize();
+
+	// Define the content of each hex
+	hexmap.setContent(function(id,hex){
+
+
+		// Build the circular token that sits on a hex
+		str = '<div class="token'+((hex.dice==8 || hex.dice == 6) ? ' token-red':'')+'">';
+		if(hex.n == "Robber"){
+			str += 'Robber '+hex.q+','+hex.r;
+            
+		}else{
+			str += '<div class="id">'+' '+hex.q+','+hex.r+'</div>'; //coor
+			str += '<div class="dice">'+hex.dice+'</div>'; //nom
+			str += '<div class="odds">'+id+ ' '+hex.i+'/div>'; 
+		}
+		str += '</div>';
+
+		return str;
+	});
+	
+	// Set the CSS class of each hex to be the hex type
+	hexmap.setClass(function(id,hex){
+		return hex.type;
+	});
+    
+    	hexmap.setBorder(function(id,hex){
+		return hex.type;
+	});
+
+    
+    
+    hexmap.on('click',function(e){
+		S('#message-8').html('You have clicked hex '+e.i+' ('+e.hex.id+')');
+        console.log(e.hex.id);
+	}).on('mouseover',function(e){
+		S('#message-8').html('You have hovered over hex '+e.i+' ('+e.hex.id+')');
+	}).on('mouseout',function(e){
+		S('#message-8').html('You have left hex '+e.i+' ('+e.hex.id+')');
+	}).on('focus',function(e){
+		S('#message-8').html('You have focussed on hex '+e.i+' ('+e.hex.id+')');
+	});
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+	// Create button which randomises the terrain
+	S('#button-8-terrain').on('click',function(){
+
+		// Define the terrain types
+		var terrains = ['hills','pasture','mountains','fields','forest'];
+
+		// Create an array of terrains to populate
+		var t = new Array(hexmap.hexes.length);
+
+		// Randomly assign terrains
+		for(var i = 0; i < hexmap.hexes.length; i++){
+			t[i] = terrains[Math.floor(Math.random()*terrains.length)];
+		}
+		
+		// Update all the classes
+		for(var i = 0; i < hexmap.hexes.length; i++){
+			if(hexmap.hexes[i].n != "Robber") hexmap.hexes[i].setClass(t[i]);
+		}
+	});
+});
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</script>

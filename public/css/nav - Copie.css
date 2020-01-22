@@ -67,7 +67,6 @@ nav{
     font-size: 2.4rem;
     box-shadow: 0px 2px 2px 0px black;
     z-index: 1;
-    text-align:center;
 }
 
 .menu-bottom {
@@ -122,20 +121,10 @@ nav{
 }
 
 
-@media screen and (min-width: 800px)
-{
-    .buton-responsive-2{
-        display: none;
-    }
-}
 
 
-.buton-responsive{
-    position: fixed;
-    top: 5px;
-    left: 20px;
-    background-color: #232c32;
-}
+
+
 
 
 /*
