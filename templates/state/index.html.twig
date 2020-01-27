@@ -4,57 +4,50 @@
 
 {% block body %}
 
-        <!-- Vault items controls-->
-        <div class="">
-             <h1>State index</h1>
-            <span class="icon icon-Fleche"></span>
-            <span class="icon icon-Happy"></span>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>DateCreate</th>
-                        <th>Color</th>
-                        <th>Language</th>
-                        <th>Statut</th>
-                        <th>actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for state in states %}
-                    <tr>
-                        <td>{{ state.id }}</td>
-                        <td>{{ state.name }}</td>
-                        <td>{{ state.description }}</td>
-                        <td>{{ state.dateCreate ? state.dateCreate|date('Y-m-d H:i:s') : '' }}</td>
-                        <td>{{ state.color }}</td>
-                        <td>{{ state.language }}</td>
-                        <td>{{ state.statut }}</td>
-                        <td>
-                            <a href="{{ path('state_show', {'id': state.id}) }}">show</a>
-                            <a href="{{ path('state_edit', {'id': state.id}) }}">edit</a>
-                        </td>
-                    </tr>
-
-                {% else %}
-                    <tr>
-                        <td colspan="8">no records found</td>
-                    </tr>
-                {% endfor %}
-
-
-
-                </tbody>
-            </table>
-
-            <a href="{{ path('state_new') }}">Create new</a>
-            
-            
-            
+    <div class="d-flex flex-sm-row flex-column">
+        <div class="mr-auto p-2">
+            <h1>State</h1>
         </div>
-  
+        <div class="p-2"><a class="btn-action" href="{{ path('state_new') }}"><span class="icon icon-Add-2"></span> New State</a></div>
+    </div>
 
-   
+    <table class="table table-hover table-responsive-md">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>DateCreate</th>
+                <th>Color</th>
+                <th>Language</th>
+                <th>Statut</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for state in states %}
+            <tr>
+                <td>{{ state.id }}</td>
+                <td>{{ state.name }}</td>
+                <td>{{ state.description }}</td>
+                <td>{{ state.dateCreate ? state.dateCreate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ state.color }}</td>
+                <td>{{ state.language }}</td>
+                <td>{{ state.statut }}</td>
+                <td>
+                    <a href="{{ path('state_show', {'id': state.id}) }}"><span class="icon-Fleche btn-next"></span></a>
+                </td>
+            </tr>
+
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+
+
+
+        </tbody>
+    </table>
+  
 {% endblock %}

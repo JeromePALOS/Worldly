@@ -3,9 +3,13 @@
 {% block title %}New StateUser{% endblock %}
 
 {% block body %}
-    <h1>Create new StateUser</h1>
+    <div class="d-flex flex-sm-row flex-column">
+        <div class="mr-auto p-2">
+            <a class="btn-action btn-back" href="{{ path('state_user_index') }}"><span class="icon-Back"></span></a>
+            <h1>Create new StateUser</h1>
+        </div>
+    </div>
 
     {{ include('state_user/_form.html.twig') }}
 
-    <a href="{{ path('state_user_index') }}">back to list</a>
 {% endblock %}

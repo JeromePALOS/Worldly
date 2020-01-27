@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Resource{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-sm-row flex-column">
+        <div class="mr-auto p-2">
+            <a class="btn-action btn-back" href="{{ path('resource_index') }}"><span class="icon-Back"></span></a>
+            <h1>Edit Resource</h1>
+        </div>
+        <div class="p-2">{{ include('resource/_delete_form.html.twig') }}</div>
+    </div>
+    
+    {{ include('resource/_form.html.twig', {'button_label': 'Update'}) }}
+
+    
+{% endblock %}

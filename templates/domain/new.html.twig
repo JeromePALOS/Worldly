@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Domain{% endblock %}
+
+{% block body %}
+    <div class="d-flex">
+        <div class="mr-auto p-2">
+            <a class="btn-action btn-back" href="{{ path('domain_index') }}"><span class="icon-Back"></span></a>
+            <h1>Create new Domain</h1>
+        </div>
+    </div>
+    
+
+    {{ include('domain/_form.html.twig') }}
+
+{% endblock %}

@@ -358,24 +358,7 @@ console.log(this.wide,this.wide/this.hex.wide,maxq,minq,this.hex.wide)
 		}
 		return this;
 	}
-    HexMap.prototype.setBorder = function(cls,start,end){
-		if(!start){ start = 0; }
-		if(!end){ end = this.hexes.length-1; }
-		
-		if(typeof cls==="function"){
-			var c;
-			for(var i = start; i <= end; i++){
-				id = this.hexes[i].el.attr('data-id')
-				c = cls.call(this,id,this.hexes[i]);
-				this.hexes[i].setClass(c);
-                if(cls.call(this,id,this.hexes[i]) !== cls.call(this,id,this.hexes[i+1])){
-                    this.hexes[i].setBorder('<div style="clip-path: polygon(0 0, 50% 0, 50% 50%, 0% 25%);" class="border"></div>');
-                }
-                    console.log(this.hexes[i].el.attr('data-id'));
-			}
-		}
-		return this;
-	}
+
         
 	
 	// Function to resize our hex grid based on the DOM container
@@ -501,4 +484,59 @@ console.log(this.wide,this.wide/this.hex.wide,maxq,minq,this.hex.wide)
 	// Make something publicly visible
 	S.hexmap = function(id,attr){ return new HexMap(id,attr); }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    HexMap.prototype.setBorder = function(cls,start,end){
+		if(!start){ start = 0; }
+		if(!end){ end = this.hexes.length-1; }
+		
+		if(typeof cls==="function"){
+			var c;
+			for(var i = start; i <= end; i++){
+				id = this.hexes[i].el.attr('data-id')
+				c = cls.call(this,id,this.hexes[i]);
+				this.hexes[i].setClass(c);
+                //if(cls.call(this,id,this.hexes[i]) !== cls.call(this,id,this.hexes[i+1])){
+                    this.hexes[i].setBorder('<div style="clip-path: polygon(0 25%, 50% 0, 50% 50%);" class="border"></div>'); //6
+                    this.hexes[i].setBorder('<div style="clip-path: polygon(50% 0%, 100% 25%, 50% 50%);" class="border"></div>'); //1
+                    this.hexes[i].setBorder('<div style="clip-path: polygon(100% 25%, 100% 75%, 50% 50%);" class="border"></div>'); //2
+                    this.hexes[i].setBorder('<div style="clip-path: polygon(100% 75%, 50% 100%, 50% 50%);" class="border"></div>'); //3
+                    this.hexes[i].setBorder('<div style="clip-path: polygon(50% 100%, 0% 75%, 50% 50%);" class="border"></div>'); //4
+                    this.hexes[i].setBorder('<div style="clip-path: polygon(0 75%, 0 25%, 50% 50%);" class="border"></div>'); //4
+                //}
+                console.log(this.hexes[i].el.attr('data-id'));
+			}
+		}
+		return this;
+	}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 })(S);

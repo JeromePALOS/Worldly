@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Resource index{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-sm-row flex-column">
+        <div class="mr-auto p-2">
+            <h1>Admin</h1>
+        </div>
+    </div>
+
+
+    <ul>
+        <li><a class="btn-action" href="{{ path('user_index') }}">User</a></li>
+        <li><a class="btn-action" href="{{ path('state_index') }}">State</a></li>
+        <li><a class="btn-action" href="{{ path('state_user_index') }}">StateUser (Citizen, nationality)</a></li>
+        <li><a class="btn-action" href="{{ path('resource_index') }}">Resource</a></li>
+        <li><a class="btn-action" href="{{ path('domain_index') }}">Domain</a></li>
+
+
+
+
+
+
+    </ul>
+{% endblock %}

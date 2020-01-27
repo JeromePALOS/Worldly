@@ -22,8 +22,13 @@ a:hover{
 input[type=color]{
     width: 5em;
 }
+h1{
+    display: inline;
+}
 
+/*********** Btn ***********/
 .btn-action{
+    margin-top :   5px;
     background:    #232c32;
     border-radius: 4px;
     padding:       4px 60px 4px 60px;
@@ -35,20 +40,50 @@ input[type=color]{
     box-shadow: 0px 1px 1px 0px black;
     border: 1px solid black; 
 }
-.btn-action:hover{ 
-    transition: 1s;
-    padding:       4px 30px 4px 90px;
-}
-.btn-action > .icon{
 
-    margin-top: 5px;
+.btn-action:hover{
+    color:white;
+}
+
+
+.btn-action > .icon{
     padding-left: 10px;
     padding-right: 10px;
 }
+
+.btn-action:hover > .icon{ 
+    color:white;
+    transition: 1s;
+    padding-left: 0px;
+    padding-right: 20px;
+}
+
+
 
 .btn-form{
     position:absolute;
     right: 15px;
     margin-top: 15px;
 }
+
+.btn-next{
+    font-size: 1.8em;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.btn-next:hover{
+    padding-right: 0px;
+    padding-left: 10px;
+    color: #ddd;
+    transition: 1s;
+    
+}
+
+.btn-back{
+    float: left;
+    padding: 5px 8px 5px 8px;
+    margin-right: 10px;
+    margin-top: 2px;
+}
+
 

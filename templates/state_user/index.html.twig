@@ -3,9 +3,14 @@
 {% block title %}StateUser index{% endblock %}
 
 {% block body %}
-    <h1>Nationality</h1>
+    <div class="d-flex flex-sm-row flex-column">
+        <div class="mr-auto p-2">
+            <h1>Citizen</h1>
+        </div>
+        <div class="p-2"><a class="btn-action" href="{{ path('state_user_new') }}"><span class="icon icon-Add-2"></span> New Citizen</a></div>
+    </div>
 
-    <table class="table">
+    <table class="table table-hover table-responsive-md">
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,8 +28,7 @@
                 <td><a href="/user/{{ state_user.user.id}}"><span class="icon-Person"></span> {{ state_user.user.username}}</a></td>
                 <td><a href="/state/{{ state_user.state.id}}"><span class="icon-Country"></span> {{ state_user.state.name}}</a></td>
                 <td>
-                    <a href="{{ path('state_user_show', {'id': state_user.id}) }}">show</a>
-                    <a href="{{ path('state_user_edit', {'id': state_user.id}) }}">edit</a>
+                    <a href="{{ path('state_user_show', {'id': state_user.id}) }}"><span class="icon-Fleche btn-next"></span></a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +39,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('state_user_new') }}">Create new</a>
 {% endblock %}

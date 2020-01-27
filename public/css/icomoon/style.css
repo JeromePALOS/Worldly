@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?kx8vzn');
-  src:  url('fonts/icomoon.eot?kx8vzn#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?kx8vzn') format('truetype'),
-    url('fonts/icomoon.woff?kx8vzn') format('woff'),
-    url('fonts/icomoon.svg?kx8vzn#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?c32dl2');
+  src:  url('fonts/icomoon.eot?c32dl2#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?c32dl2') format('truetype'),
+    url('fonts/icomoon.woff?c32dl2') format('woff'),
+    url('fonts/icomoon.svg?c32dl2#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,162 +25,174 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-Menu-2:before {
-  content: "\e934";
-}
-.icon-Edit:before {
-  content: "\e931";
-}
-.icon-Pen:before {
-  content: "\e932";
-}
-.icon-Menu:before {
-  content: "\e933";
-}
-.icon-Fleche:before {
+.icon-Back:before {
   content: "\e900";
 }
-.icon-Moins:before {
+.icon-Update:before {
   content: "\e901";
 }
-.icon-Plus:before {
+.icon-Add-2:before {
   content: "\e902";
 }
-.icon-Map:before {
+.icon-Trash:before {
   content: "\e903";
 }
-.icon-Science:before {
+.icon-Edit:before {
   content: "\e904";
 }
-.icon-Delete:before {
+.icon-Pen:before {
   content: "\e905";
 }
-.icon-Plus-2:before {
+.icon-Menu:before {
   content: "\e906";
 }
-.icon-Continue:before {
+.icon-Fleche:before {
   content: "\e907";
 }
-.icon-Next:before {
+.icon-Moins:before {
   content: "\e908";
 }
-.icon-Texting:before {
+.icon-plus:before {
   content: "\e909";
 }
-.icon-Calendar:before {
+.icon-Map:before {
   content: "\e90a";
 }
-.icon-Calendar-2:before {
+.icon-Science:before {
   content: "\e90b";
 }
-.icon-Calendar-3:before {
+.icon-Delete:before {
   content: "\e90c";
 }
-.icon-Person:before {
+.icon-Plus-2:before {
   content: "\e90d";
 }
-.icon-User:before {
+.icon-Continue:before {
   content: "\e90e";
 }
-.icon-Group:before {
+.icon-Next:before {
   content: "\e90f";
 }
-.icon-Adjust:before {
+.icon-Texting:before {
   content: "\e910";
 }
-.icon-Diagram:before {
+.icon-Calendar:before {
   content: "\e911";
 }
-.icon-Search:before {
+.icon-Calendar-2:before {
   content: "\e912";
 }
-.icon-Won:before {
+.icon-Calendar-3:before {
   content: "\e913";
 }
-.icon-Won-2:before {
+.icon-Person:before {
   content: "\e914";
 }
-.icon-Done:before {
+.icon-User:before {
   content: "\e915";
 }
-.icon-Group-2:before {
+.icon-Group:before {
   content: "\e916";
 }
-.icon-Law:before {
+.icon-Adjust:before {
   content: "\e917";
 }
-.icon-Law-2:before {
+.icon-Diagram:before {
   content: "\e918";
 }
-.icon-Law-3:before {
+.icon-Search:before {
   content: "\e919";
 }
-.icon-School:before {
+.icon-Won:before {
   content: "\e91a";
 }
-.icon-Train:before {
+.icon-Won-2:before {
   content: "\e91b";
 }
-.icon-Station:before {
+.icon-Done:before {
   content: "\e91c";
 }
-.icon-Radioactive:before {
+.icon-Group-2:before {
   content: "\e91d";
 }
-.icon-Bomb:before {
+.icon-Law:before {
   content: "\e91e";
 }
-.icon-Nuclear:before {
+.icon-Law-2:before {
   content: "\e91f";
 }
-.icon-Missile:before {
+.icon-Law-3:before {
   content: "\e920";
 }
-.icon-Harbour:before {
+.icon-School:before {
   content: "\e921";
 }
-.icon-Mountain:before {
+.icon-Train:before {
   content: "\e922";
 }
-.icon-Mountain-2:before {
+.icon-Station:before {
   content: "\e923";
 }
-.icon-Forest:before {
+.icon-Radioactive:before {
   content: "\e924";
 }
-.icon-Country:before {
+.icon-Bomb:before {
   content: "\e925";
 }
-.icon-Culture:before {
+.icon-Nuclear:before {
   content: "\e926";
 }
-.icon-Euro:before {
+.icon-Missile:before {
   content: "\e927";
 }
-.icon-Wheat:before {
+.icon-Harbour:before {
   content: "\e928";
 }
-.icon-Army:before {
+.icon-Mountain:before {
   content: "\e929";
 }
-.icon-Work:before {
+.icon-Mountain-2:before {
   content: "\e92a";
 }
-.icon-Rail:before {
+.icon-Forest:before {
   content: "\e92b";
 }
-.icon-Cross:before {
+.icon-Country:before {
   content: "\e92c";
 }
-.icon-Education:before {
+.icon-Culture:before {
   content: "\e92d";
 }
-.icon-Hospital:before {
+.icon-Euro:before {
   content: "\e92e";
 }
-.icon-Lightning:before {
+.icon-Wheat:before {
   content: "\e92f";
 }
-.icon-Happy:before {
+.icon-Army:before {
   content: "\e930";
+}
+.icon-Work:before {
+  content: "\e931";
+}
+.icon-Rail:before {
+  content: "\e932";
+}
+.icon-Cross:before {
+  content: "\e933";
+}
+.icon-Education:before {
+  content: "\e934";
+}
+.icon-Hospital:before {
+  content: "\e935";
+}
+.icon-Lightning:before {
+  content: "\e936";
+}
+.icon-Happy:before {
+  content: "\e937";
+}
+.icon-Add:before {
+  content: "\e938";
 }
