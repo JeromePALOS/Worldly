@@ -86,29 +86,43 @@
 {
 	"layout":"odd-r",
 	"hexes": {
-		"A":{"n":"11111111111111111111111111111","q":0,"r":0,"dice":5,"type":"mountains"},
-		"B":{"n":"B","q":1,"r":0,"dice":2,"type":"fields"},
-		"C":{"n":"C","q":2,"r":0,"dice":6,"type":"forest"},
-		"D":{"n":"D","q":2,"r":1,"dice":3,"type":"mountains"},
-		"E":{"n":"E","q":3,"r":2,"dice":8,"type":"fields"},
-		"F":{"n":"F","q":2,"r":3,"dice":10,"type":"pasture"},
-		"G":{"n":"G","q":2,"r":4,"dice":9,"type":"fields"},
-		"H":{"n":"H","q":1,"r":4,"dice":12,"type":"pasture"},
-		"I":{"n":"I","q":0,"r":4,"dice":11,"type":"forest"},
-		"J":{"n":"J","q":-1,"r":3,"dice":4,"type":"hills"},
-		"Robber":{"n":"Robber","q":-1,"r":2,"dice":7,"type":"desert"},
-		"K":{"n":"K","q":-1,"r":1,"dice":8,"type":"hills"},
-		"L":{"n":"L","q":0,"r":1,"dice":10,"type":"pasture"},
-		"M":{"n":"M","q":1,"r":1,"dice":9,"type":"pasture"},
-		"N":{"n":"N","q":2,"r":2,"dice":4,"type":"forest"},
-		"O":{"n":"O","q":1,"r":3,"dice":5,"type":"hills"},
-		"P":{"n":"P","q":0,"r":3,"dice":6,"type":"mountains"},
-		"Q":{"n":"Q","q":0,"r":2,"dice":3,"type":"forest"},
-		"R":{"n":"R","q":1,"r":2,"dice":11,"type":"fields"}
+		"0":{"q":0,     "r":0,    "name":"0-0",    "type":"mountains",      "state":1       },
+		"1":{"q":1,     "r":0,    "name":"1-0",    "type":"desert",         "state":1       },
+		"2":{"q":2,     "r":0,    "name":"2-0",    "type":"fields",         "state":1       },
+		"3":{"q":0,     "r":1,    "name":"0-1",    "type":"forest",         "state":1       },
+		"4":{"q":1,     "r":1,    "name":"1-1",    "type":"mountains",      "state":2       },
+		"5":{"q":2,     "r":1,    "name":"2-1",    "type":"mountains",      "state":1       },
+		"6":{"q":0,     "r":2,    "name":"0-2",    "type":"mountains",      "state":1       },
+		"7":{"q":1,     "r":2,    "name":"1-2",    "type":"mountains",      "state":1       },
+		"8":{"q":2,     "r":2,    "name":"2-2",    "type":"mountains",      "state":1       }
 		
 	}
 }
+
+
+
 </code>
+<!--
+	/*
+	"hexes": {
+		"0":{"x":0,     "y":0,    "name":5,    "type":"mountains"         },
+		"1":{"x":1,     "y":0,    "name":2,    "type":"fields"            },
+		"2":{"x":2,     "y":0,    "name":6,    "type":"forest"            },
+		"3":{"x":2,     "y":1,    "name":3,    "type":"mountains"         },
+		"4":{"x":3,     "y":2,    "name":8,    "type":"fields"            },
+		"5":{"x":2,     "y":3,    "name":10,   "type":"pasture"           },
+		"6":{"x":2,     "y":4,    "name":9,    "type":"fields"            },
+		"7":{"x":1,     "y":4,    "name":12,   "type":"pasture"           },
+		"8":{"x":0,     "y":4,    "name":11,   "type":"forest"            },
+		"9":{"x":-1,    "y":3,    "name":4,    "type":"hills"             },
+		"10":{"x":-1,   "y":2,    "name":7,    "type":"desert"            },
+
+		
+	}
+	*/
+	-->
+
+
 </div>
 <div style="text-align:center;margin-top:1em;">
 	<button id="button-8-terrain">Randomise terrain</button>
@@ -133,14 +147,9 @@ S(document).ready(function(){
 
 		// Build the circular token that sits on a hex
 		str = '<div class="token'+((hex.dice==8 || hex.dice == 6) ? ' token-red':'')+'">';
-		if(hex.n == "Robber"){
-			str += 'Robber '+hex.q+','+hex.r;
-            
-		}else{
-			str += '<div class="id">'+' '+hex.q+','+hex.r+'</div>'; //coor
-			str += '<div class="dice">'+hex.dice+'</div>'; //nom
-			str += '<div class="odds">'+id+ ' '+hex.i+'/div>'; 
-		}
+            str += '<div class="id">'+' '+hex.q+','+hex.r+'</div>'; //coor
+            str += '<div class="dice">'+hex.name+'</div>'; //nom
+            str += '<div class="odds">'+id+ '</div>'; 
 		str += '</div>';
 
 		return str;

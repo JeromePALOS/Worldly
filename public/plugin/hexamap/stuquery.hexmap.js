@@ -439,6 +439,8 @@ console.log(this.wide,this.wide/this.hex.wide,maxq,minq,this.hex.wide)
 
 		return this;
 	}
+    
+    
 	
 	Hex.prototype.position = function(x,y,w,h){
 		this.el.css({
@@ -501,23 +503,63 @@ console.log(this.wide,this.wide/this.hex.wide,maxq,minq,this.hex.wide)
 		if(!start){ start = 0; }
 		if(!end){ end = this.hexes.length-1; }
 		
-		if(typeof cls==="function"){
-			var c;
+
 			for(var i = start; i <= end; i++){
-				id = this.hexes[i].el.attr('data-id')
-				c = cls.call(this,id,this.hexes[i]);
-				this.hexes[i].setClass(c);
+
+                    
+              
+                
                 //if(cls.call(this,id,this.hexes[i]) !== cls.call(this,id,this.hexes[i+1])){
+                for(let j = start; j <= end; j++ ){
+                    if(this.hexes[i].state !== this.hexes[j].state){
+                        if(
+                            this.hexes[i].q + 1 == this.hexes[j].q && 
+                            this.hexes[i].r + 1 == this.hexes[j].r
+                          ){
+                            this.hexes[i].setBorder('<div style="clip-path: polygon(50% 0%, 100% 25%, 50% 50%);" class="border"></div>'); //1
+                        }/*else if(
+                            this.hexes[i].q + 1 == this.hexes[j].q && 
+                            this.hexes[i].r == this.hexes[j].r
+                          ){
+                            this.hexes[i].setBorder('<div style="clip-path: polygon(100% 25%, 100% 75%, 50% 50%);" class="border"></div>'); //2
+                        }else if(
+                            this.hexes[i].q + 1 == this.hexes[j].q && 
+                            this.hexes[i].r - 1 == this.hexes[j].r
+                          ){
+                            this.hexes[i].setBorder('<div style="clip-path: polygon(100% 75%, 50% 100%, 50% 50%);" class="border"></div>'); //3
+                        }else if(
+                            this.hexes[i].q == this.hexes[j].q && 
+                            this.hexes[i].r - 1 == this.hexes[j].r
+                          ){
+                            this.hexes[i].setBorder('<div style="clip-path: polygon(50% 100%, 0% 75%, 50% 50%);" class="border"></div>'); //4
+                        }else if(
+                            this.hexes[i].q - 1 == this.hexes[j].q && 
+                            this.hexes[i].r - 1== this.hexes[j].r
+                          ){
+                            this.hexes[i].setBorder('<div style="clip-path: polygon(0 75%, 0 25%, 50% 50%);" class="border"></div>'); //5
+                        }else if(
+                            this.hexes[i].q + 1 == this.hexes[j].q && 
+                            this.hexes[i].r - 1 == this.hexes[j].r
+                          ){
+                            this.hexes[i].setBorder('<div style="clip-path: polygon(0 25%, 50% 0, 50% 50%);" class="border"></div>'); //6
+                        }*/
+                    }
+                    
+                }
+                
+                
+                /*
                     this.hexes[i].setBorder('<div style="clip-path: polygon(0 25%, 50% 0, 50% 50%);" class="border"></div>'); //6
                     this.hexes[i].setBorder('<div style="clip-path: polygon(50% 0%, 100% 25%, 50% 50%);" class="border"></div>'); //1
                     this.hexes[i].setBorder('<div style="clip-path: polygon(100% 25%, 100% 75%, 50% 50%);" class="border"></div>'); //2
                     this.hexes[i].setBorder('<div style="clip-path: polygon(100% 75%, 50% 100%, 50% 50%);" class="border"></div>'); //3
                     this.hexes[i].setBorder('<div style="clip-path: polygon(50% 100%, 0% 75%, 50% 50%);" class="border"></div>'); //4
-                    this.hexes[i].setBorder('<div style="clip-path: polygon(0 75%, 0 25%, 50% 50%);" class="border"></div>'); //4
+                    this.hexes[i].setBorder('<div style="clip-path: polygon(0 75%, 0 25%, 50% 50%);" class="border"></div>'); //5
+                */
                 //}
-                console.log(this.hexes[i].el.attr('data-id'));
+                //console.log(this.hexes[i].el.attr('data-id'));
 			}
-		}
+		
 		return this;
 	}
     
