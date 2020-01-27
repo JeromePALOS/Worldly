@@ -363,15 +363,18 @@ console.log(this.wide,this.wide/this.hex.wide,maxq,minq,this.hex.wide)
 	
 	// Function to resize our hex grid based on the DOM container
 	HexMap.prototype.resize = function(){
+alert(this.container.attr('data-zoom'));
 		this.container.css({'width':'','height':''})
 		var parent = this.container.parent();
 		var padding = paddingWidth(this.container[0]);
 		if(this.container[0].offsetWidth < this.wide + padding){
 			w = this.container[0].offsetWidth - padding;
-			scale = Math.min(1,w/this.wide);
+			scale = parseFloat(this.container.attr('data-zoom')) || Math.min(1,w/this.wide);
 			this.container.find('.hexmap').css({'height':(this.tall*scale).toFixed(1)+'px','transform':'scale('+(scale).toFixed(4)+')','transform-origin':'bottom left'});
+//this.container.find('.hexmap').css({'transform':'scale('+(scale).toFixed(2)+')'});
 		}else{
 			this.container.css({'width':this.wide+'px','height':this.tall+'px'}).find('.hexmap').css({'width':this.wide+'px','height':this.tall+'px','transform':'scale(1)'});
+			//this.container.css({'transform':'scale('+this.zoom.toFixed(4)+')'}).find('.hexmap').css({'transform':'scale('+this.zoom.toFixed(4)+')'});
 		}
 		this.container.find('.hexmapinner').css({'transform':'scale('+this.zoom.toFixed(4)+')'});
 		return this;
@@ -503,63 +506,56 @@ console.log(this.wide,this.wide/this.hex.wide,maxq,minq,this.hex.wide)
 		if(!start){ start = 0; }
 		if(!end){ end = this.hexes.length-1; }
 		
+        for(var i = start; i <= end; i++){
 
-			for(var i = start; i <= end; i++){
+            //if(cls.call(this,id,this.hexes[i]) !== cls.call(this,id,this.hexes[i+1])){
+            for(let j = start; j <= end; j++ ){
 
-                    
-              
-                
-                //if(cls.call(this,id,this.hexes[i]) !== cls.call(this,id,this.hexes[i+1])){
-                for(let j = start; j <= end; j++ ){
-                    if(this.hexes[i].state !== this.hexes[j].state){
-                        if(
-                            this.hexes[i].q + 1 == this.hexes[j].q && 
-                            this.hexes[i].r + 1 == this.hexes[j].r
-                          ){
-                            this.hexes[i].setBorder('<div style="clip-path: polygon(50% 0%, 100% 25%, 50% 50%);" class="border"></div>'); //1
-                        }/*else if(
-                            this.hexes[i].q + 1 == this.hexes[j].q && 
-                            this.hexes[i].r == this.hexes[j].r
-                          ){
-                            this.hexes[i].setBorder('<div style="clip-path: polygon(100% 25%, 100% 75%, 50% 50%);" class="border"></div>'); //2
-                        }else if(
-                            this.hexes[i].q + 1 == this.hexes[j].q && 
-                            this.hexes[i].r - 1 == this.hexes[j].r
-                          ){
-                            this.hexes[i].setBorder('<div style="clip-path: polygon(100% 75%, 50% 100%, 50% 50%);" class="border"></div>'); //3
-                        }else if(
-                            this.hexes[i].q == this.hexes[j].q && 
-                            this.hexes[i].r - 1 == this.hexes[j].r
-                          ){
-                            this.hexes[i].setBorder('<div style="clip-path: polygon(50% 100%, 0% 75%, 50% 50%);" class="border"></div>'); //4
-                        }else if(
-                            this.hexes[i].q - 1 == this.hexes[j].q && 
-                            this.hexes[i].r - 1== this.hexes[j].r
-                          ){
-                            this.hexes[i].setBorder('<div style="clip-path: polygon(0 75%, 0 25%, 50% 50%);" class="border"></div>'); //5
-                        }else if(
-                            this.hexes[i].q + 1 == this.hexes[j].q && 
-                            this.hexes[i].r - 1 == this.hexes[j].r
-                          ){
-                            this.hexes[i].setBorder('<div style="clip-path: polygon(0 25%, 50% 0, 50% 50%);" class="border"></div>'); //6
-                        }*/
+                if(this.hexes[i].state !== this.hexes[j].state){
+
+                    if(this.hexes[i].q + 1 == this.hexes[j].q && this.hexes[i].r == this.hexes[j].r){
+                        this.hexes[i].setBorder('<div class="border border-2"></div>'); //2
+
+                    }else if(this.hexes[i].q - 1 == this.hexes[j].q && this.hexes[i].r == this.hexes[j].r){
+                        this.hexes[i].setBorder('<div class="border border-5"></div>'); //5
+
                     }
-                    
+
+
+
+                    if(this.hexes[i].r%2 !== 0){
+                        if(this.hexes[i].q + 1 == this.hexes[j].q && this.hexes[i].r + 1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-1"></div>'); //1
+
+                        }else if(this.hexes[i].q == this.hexes[j].q && this.hexes[i].r - 1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-4"></div>'); //4
+
+                        }else if(this.hexes[i].q == this.hexes[j].q && this.hexes[i].r + 1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-6"></div>'); //6
+
+                        }else if(this.hexes[i].q + 1 == this.hexes[j].q && this.hexes[i].r - 1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-3"></div>'); //3
+                        }
+
+
+                    }else{
+                        if(this.hexes[i].q == this.hexes[j].q && this.hexes[i].r +1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-1"></div>'); //1
+
+                        }else if(this.hexes[i].q - 1 == this.hexes[j].q && this.hexes[i].r - 1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-4"></div>'); //4
+
+                        }else if(this.hexes[i].q - 1 == this.hexes[j].q && this.hexes[i].r + 1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-6"></div>'); //6
+
+                        }else if(this.hexes[i].q == this.hexes[j].q && this.hexes[i].r - 1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-3"></div>'); //3
+                        }
+                    }
                 }
+            }
                 
-                
-                /*
-                    this.hexes[i].setBorder('<div style="clip-path: polygon(0 25%, 50% 0, 50% 50%);" class="border"></div>'); //6
-                    this.hexes[i].setBorder('<div style="clip-path: polygon(50% 0%, 100% 25%, 50% 50%);" class="border"></div>'); //1
-                    this.hexes[i].setBorder('<div style="clip-path: polygon(100% 25%, 100% 75%, 50% 50%);" class="border"></div>'); //2
-                    this.hexes[i].setBorder('<div style="clip-path: polygon(100% 75%, 50% 100%, 50% 50%);" class="border"></div>'); //3
-                    this.hexes[i].setBorder('<div style="clip-path: polygon(50% 100%, 0% 75%, 50% 50%);" class="border"></div>'); //4
-                    this.hexes[i].setBorder('<div style="clip-path: polygon(0 75%, 0 25%, 50% 50%);" class="border"></div>'); //5
-                */
-                //}
-                //console.log(this.hexes[i].el.attr('data-id'));
-			}
-		
+        }
 		return this;
 	}
     
