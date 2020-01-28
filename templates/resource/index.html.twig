@@ -16,6 +16,7 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Domain</th>
+                <th>Salable</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -25,6 +26,7 @@
                 <td>{{ resource.id }}</td>
                 <td>{{ resource.name }}</td>
                 <td>{{ resource.domain.name }}</td>
+                <td>{{ resource.salable }}</td>
                 <td>
                     <a href="{{ path('resource_show', {'id': resource.id}) }}"><span class="icon-Fleche btn-next"></span></a>
                 </td>

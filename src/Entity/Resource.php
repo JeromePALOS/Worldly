@@ -26,6 +26,11 @@ class Resource
      */
     private $domain;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $salable;
+
 
     public function getId(): ?int
     {
@@ -55,6 +60,20 @@ class Resource
 
         return $this;
     }
+
+    public function getSalable(): ?bool
+    {
+        return $this->salable;
+    }
+
+    public function setSalable(bool $salable): self
+    {
+        $this->salable = $salable;
+
+        return $this;
+    }
+    
+
 
 
 }

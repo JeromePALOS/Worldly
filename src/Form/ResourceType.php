@@ -20,6 +20,7 @@ class ResourceType extends AbstractType
                 'class' => Domain::class,
                 'choice_label' => 'name',
             ])
+            ->add('salable')
         ;
     }
 
