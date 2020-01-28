@@ -91,7 +91,8 @@
 			var html = '<div class="hexmap '+this.type+'" data-layout="'+this.layout+'"><div class="hexmapinner">';
 			var i = 0;
 			for(var id in json.hexes){
-				html += '<'+this.tag+' class="hex" tabindex="0" data-id="'+id+'" data-r="'+json.hexes[id].r+'" data-q="'+json.hexes[id].q+'"><div class="hexinner"><div class="hexcontent">'+(typeof this.options.formatLabel==="function" ? this.options.formatLabel(id,json.hexes[id]) : '')+'</div></div></'+this.tag+'>';
+                //modif perso
+				html += '<'+this.tag+' id="hex-'+id+'" class="hex" tabindex="0" data-id="'+id+'" data-r="'+json.hexes[id].r+'" data-q="'+json.hexes[id].q+'"><div class="hexinner"><div class="hexcontent">'+(typeof this.options.formatLabel==="function" ? this.options.formatLabel(id,json.hexes[id]) : '')+'</div></div></'+this.tag+'>';
 				this.hexes[i] = new Hex(json.hexes[id],{'parent':this,'id':id});
 				this.lookup[id] = i;
 				i++;
@@ -363,18 +364,18 @@ console.log(this.wide,this.wide/this.hex.wide,maxq,minq,this.hex.wide)
 	
 	// Function to resize our hex grid based on the DOM container
 	HexMap.prototype.resize = function(){
-alert(this.container.attr('data-zoom'));
+
 		this.container.css({'width':'','height':''})
 		var parent = this.container.parent();
 		var padding = paddingWidth(this.container[0]);
 		if(this.container[0].offsetWidth < this.wide + padding){
 			w = this.container[0].offsetWidth - padding;
-			scale = parseFloat(this.container.attr('data-zoom')) || Math.min(1,w/this.wide);
+			scale = Math.min(1,w/this.wide);
 			this.container.find('.hexmap').css({'height':(this.tall*scale).toFixed(1)+'px','transform':'scale('+(scale).toFixed(4)+')','transform-origin':'bottom left'});
-//this.container.find('.hexmap').css({'transform':'scale('+(scale).toFixed(2)+')'});
+
 		}else{
 			this.container.css({'width':this.wide+'px','height':this.tall+'px'}).find('.hexmap').css({'width':this.wide+'px','height':this.tall+'px','transform':'scale(1)'});
-			//this.container.css({'transform':'scale('+this.zoom.toFixed(4)+')'}).find('.hexmap').css({'transform':'scale('+this.zoom.toFixed(4)+')'});
+
 		}
 		this.container.find('.hexmapinner').css({'transform':'scale('+this.zoom.toFixed(4)+')'});
 		return this;
@@ -501,7 +502,7 @@ alert(this.container.attr('data-zoom'));
     
     
     
-    
+    //modif perso
     HexMap.prototype.setBorder = function(cls,start,end){
 		if(!start){ start = 0; }
 		if(!end){ end = this.hexes.length-1; }

@@ -1,0 +1,103 @@
+   
+
+.token {
+	font-family: serif;
+	border-radius: 100%;
+	background-color: wheat;
+	width: 4em;
+	height: 4em;
+	color: black;
+	display: table-cell;
+	vertical-align: middle;
+}
+.token.token-red { color: crimson; }
+.token .id, .token .odds { font-size: 0.5em; }
+.token .dice { font-size: 2em; }
+.hills { background-color: #c8906e; }
+.pasture { background-color: #b5c881; }
+.mountains { background-color: #778088; }
+.fields { background-color: #e9b66c; }
+.forest { background-color: #55855f; }
+.desert { background-color: #f5dcad; }
+
+
+
+
+
+
+.border{      
+    position:absolute;
+    background-color:red;
+    width:100%;
+    height:100%;
+}
+    
+.border-1{
+    -webkit-clip-path: polygon(50% 0%, 100% 25%, 50% 50%);
+    clip-path: polygon(50% 0%, 100% 25%, 50% 50%);
+} 
+.border-2{
+    -webkit-clip-path: polygon(100% 25%, 100% 75%, 50% 50%);
+    clip-path: polygon(100% 25%, 100% 75%, 50% 50%);
+} 
+.border-3{
+   -webkit-clip-path: polygon(100% 75%, 50% 100%, 50% 50%);
+   clip-path: polygon(100% 75%, 50% 100%, 50% 50%);
+} 
+.border-4{
+    -webkit-clip-path: polygon(50% 100%, 0% 75%, 50% 50%);
+    clip-path: polygon(50% 100%, 0% 75%, 50% 50%);
+} 
+.border-5{
+    -webkit-clip-path: polygon(0 75%, 0 25%, 50% 50%);
+    clip-path: polygon(0 75%, 0 25%, 50% 50%);
+} 
+.border-6{
+    -webkit-clip-path: polygon(0 25%, 50% 0, 50% 50%);
+    clip-path: polygon(0 25%, 50% 0, 50% 50%);
+} 
+
+
+
+
+
+
+
+
+
+
+#message-8 {
+
+	background: black;
+	color: white;
+	padding: 0.25em 0.5em;
+	z-index: 10;
+}
+.hex {
+	cursor: pointer;
+}
+.hex:hover .hexinner, 
+.hex:focus .hexinner {
+	background: black!important;
+	color: white;
+}
+
+.area-map{
+  
+  width: 100%;
+  height: 500px;
+  padding: 0;
+  margin: 0;
+    cursor: move;
+    background-color: #66bbe2;
+    background-color: #66bbe2;
+    overflow: hidden;
+}
+
+.hexmap {
+	background-color: #66bbe2;
+
+
+
+    
+}
