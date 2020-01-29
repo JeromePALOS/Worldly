@@ -15,8 +15,7 @@ class State
     public function __construct(){
 		$this->dateCreate = new \Datetime();
         $this->userCreator = new ArrayCollection();
-        $this->stateUsers = new ArrayCollection();
-		
+        $this->stateUsers = new ArrayCollection();		
 	}
     
     
@@ -67,6 +66,12 @@ class State
      * @ORM\OneToMany(targetEntity="App\Entity\StateUser", mappedBy="state", orphanRemoval=true)
      */
     private $stateUsers;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Server", inversedBy="states")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $server;
 
 
 
@@ -186,6 +191,18 @@ class State
                 $stateUser->setState(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getServer(): ?Server
+    {
+        return $this->server;
+    }
+
+    public function setServer(?Server $server): self
+    {
+        $this->server = $server;
 
         return $this;
     }

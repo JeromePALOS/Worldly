@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Server index{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-sm-row flex-column">
+        <div class="mr-auto p-2">
+            <h1>Server</h1>
+        </div>
+        <div class="p-2"><a class="btn-action" href="{{ path('server_new') }}"><span class="icon icon-Add-2"></span> New Server</a></div>
+    </div>
+
+    <table class="table table-hover table-responsive-md">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>DateCreation</th>
+                <th>Description</th>
+                <th>Visible</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for server in servers %}
+            <tr>
+                <td>{{ server.id }}</td>
+                <td>{{ server.name }}</td>
+                <td>{{ server.dateCreation ? server.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ server.description }}</td>
+                <td>{{ server.visible ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('server_show', {'id': server.id}) }}"><span class="icon-Fleche btn-next"></span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

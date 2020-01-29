@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Server{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-sm-row flex-column">
+        <div class="mr-auto p-2">
+            <a class="btn-action btn-back" href="{{ path('server_index') }}"><span class="icon-Back"></span></a>
+            <h1>Create new Server</h1>
+        </div>
+    </div>
+    
+
+    {{ include('server/_form.html.twig') }}
+
+{% endblock %}

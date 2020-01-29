@@ -20,18 +20,13 @@ class StateController extends AbstractController
     /**
      * @Route("/", name="state_index", methods={"GET"})
      */
-    public function index(StateRepository $stateRepository, UserRepository $userRepository): Response
+    public function index(StateRepository $stateRepository): Response
     {
         
-        
-
-        $menu = array(
-            "states" => $userRepository->find($this->getUser()->getId())->getStateCreates()
-        );
+        $states = $stateRepository->findByServer($this->getUser()->getServer());
         
         return $this->render('state/index.html.twig', [
-            'states' => $stateRepository->findAll(),
-            'menu' => $menu
+            'states' => $states,
         ]);
     }
 
@@ -44,12 +39,17 @@ class StateController extends AbstractController
         
         $role = $this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
         $form = $this->createForm(StateType::class, $state, array('role' => $role));
+        if(!$role){
+            $state->setStatut("Awainting");
+        }    
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             
-            $state->setStatut("Awainting");
+            
+            $state->setServer($this->getUser()->getServer());
             $state->setUserCreator($this->getUser());
             
             $entityManager->persist($state);

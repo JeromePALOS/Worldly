@@ -3,6 +3,10 @@ namespace App\Service;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface;
+
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
+
 class GrantedService
 {
     private $accessDecisionManager;
@@ -14,10 +18,14 @@ class GrantedService
     public function __construct(AccessDecisionManagerInterface $accessDecisionManager) {
         $this->accessDecisionManager = $accessDecisionManager;
     }
+    
     public function isGranted(User $user, $attributes, $object = null) {
         if (!is_array($attributes))
             $attributes = [$attributes];
         $token = new UsernamePasswordToken($user, 'none', 'none', $user->getRoles());
         return ($this->accessDecisionManager->decide($token, $attributes, $object));
     }
+
+    
+    
 }

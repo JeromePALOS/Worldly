@@ -20,19 +20,19 @@ use App\Service\GrantedService;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="user_index", methods={"GET"})
+     * @Route("/admin/", name="user_index", methods={"GET"})
      */
     public function index(GrantedService $grantedService): Response
-    {
-               
+    {    
         if (!$grantedService->isGranted($this->getUser(), 'ROLE_ADMIN')) {
             throw new AccessDeniedException('You don\'t have permission.');
         }
         
         
+        
         $users = $this->getDoctrine()
                 ->getRepository(User::class)
-                ->findAll();
+                ->findByServer($this->getUser()->getServer());
         return $this->render('user/index.html.twig', [
             'users' => $users,
         ]);
@@ -40,34 +40,13 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="user_new", methods={"GET","POST"})
+     * @Route("/new", name="user_new", methods={"GET"})
      */
-    public function new(GrantedService $grantedService, Request $request): Response
+    public function new(Request $request): Response
     {
-        
-        if (!$grantedService->isGranted($this->getUser(), 'ROLE_ADMIN')) {
-            throw new AccessDeniedException('You don\'t have permission.');
-        }
-        
-        
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('user_index');
-        }
-
-        return $this->render('user/new.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);
+        throw new AccessDeniedException('Page under construction');
     }
-
+    
     /**
      * @Route("/{id}", name="user_show", methods={"GET"})
      */
@@ -79,16 +58,11 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     * @Route("/admin/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
     public function edit(GrantedService $grantedService, Request $request, User $user): Response
     {
-        
-        if (!$grantedService->isGranted($this->getUser(), 'ROLE_ADMIN')) {
-            throw new AccessDeniedException('You don\'t have permission.');
-        }
-        
-        
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -109,9 +83,7 @@ class UserController extends AbstractController
      */
     public function delete(GrantedService $grantedService, Request $request, User $user): Response
     {
-        if (!$grantedService->isGranted($this->getUser(), 'ROLE_ADMIN')) {
-            throw new AccessDeniedException('You don\'t have permission.');
-        }
+
         
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             

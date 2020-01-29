@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Region{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-sm-row flex-column">
+        <div class="mr-auto p-2">
+            <a class="btn-action btn-back" href="{{ path('region_index') }}"><span class="icon-Back"></span></a>
+            <h1>Region</h1>
+        </div>
+        <div class="p-2"><a class="btn-action" href="{{ path('region_edit', {'id': region.id}) }}"><span class="icon icon-Pen"></span> Edit</a></div>
+        <div class="p-2">{{ include('region/_delete_form.html.twig') }}</div>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ region.id }}</td>
+            </tr>
+            <tr>
+                <th>X</th>
+                <td>{{ region.x }}</td>
+            </tr>
+            <tr>
+                <th>Y</th>
+                <td>{{ region.y }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+
+    
+
+    
+{% endblock %}

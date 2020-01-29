@@ -31,10 +31,16 @@ class User extends BaseUser
      */
     private $stateUsers;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Server", inversedBy="users")
+     */
+    private $server;
+
 
     public function __construct()
     {
         parent::__construct();
+        
         $this->states = new ArrayCollection();
         $this->stateUsers = new ArrayCollection();
         // your own logic
@@ -98,6 +104,18 @@ class User extends BaseUser
                 $stateUser->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getServer(): ?Server
+    {
+        return $this->server;
+    }
+
+    public function setServer(?Server $server): self
+    {
+        $this->server = $server;
 
         return $this;
     }

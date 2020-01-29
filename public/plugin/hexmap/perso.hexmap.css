@@ -104,11 +104,11 @@
 .area-map{
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 100%;
     padding: 0;
     margin: 0;
     cursor: move;
-    background-color: #66bbe2;
+    background-color: #187199;
     overflow: hidden;
     box-shadow: inset 0 0 6px black;
     border-radius:5px;

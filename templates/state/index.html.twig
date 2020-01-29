@@ -6,6 +6,15 @@
 
     <div class="d-flex flex-sm-row flex-column">
         <div class="mr-auto p-2">
+            <h1>World Map</h1>
+        </div>
+        
+    </div>
+    <div style="height: 80vh;">
+        {% include 'map.html' %}
+    </div>
+    <div class="d-flex flex-sm-row flex-column">
+        <div class="mr-auto p-2">
             <h1>State</h1>
         </div>
         <div class="p-2"><a class="btn-action" href="{{ path('state_new') }}"><span class="icon icon-Add-2"></span> New State</a></div>
@@ -51,6 +60,22 @@
     </table>
 
 
-    {% include 'map.html' %}
+    
 
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+<script>
+    
+    $.ajax({
+        url: "{{ path('region_map_json') }}",
+        method: "post",
+        data: { 'id': {{app.user.server.id}} }
+    }).done(function(json){
+        console.log(json);
+        
+        
+        
+    });
+</script>    
 {% endblock %}

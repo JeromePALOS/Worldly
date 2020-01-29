@@ -49,4 +49,4 @@ state-update:
   
   fos user
   php bin/console fos:user:promote testuser ROLE_ADMIN
-  php bin/console fos:user:demote testuser ROLE_ADMIN# Worldly
+  php bin/console fos:user:demote testuser ROLE_ADMIN

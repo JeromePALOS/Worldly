@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/resource")
+ * @Route("/admin/resource")
  */
 class ResourceController extends AbstractController
 {
