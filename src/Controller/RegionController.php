@@ -6,6 +6,7 @@ use App\Entity\Region;
 use App\Form\RegionType;
 use App\Repository\RegionRepository;
 use App\Repository\ServerRepository;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
- * @Route("/admin/region")
+ * @Route("/region")
  */
 class RegionController extends AbstractController
 {
@@ -29,7 +30,7 @@ class RegionController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="region_new", methods={"GET","POST"})
+     * @Route("/admin/new", name="region_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -54,7 +55,7 @@ class RegionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="region_show", methods={"GET"})
+     * @Route("/admin/{id}", name="region_show", methods={"GET"})
      */
     public function show(Region $region): Response
     {
@@ -64,7 +65,7 @@ class RegionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="region_edit", methods={"GET","POST"})
+     * @Route("/admin/{id}/edit", name="region_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Region $region): Response
     {
@@ -84,7 +85,7 @@ class RegionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="region_delete", methods={"DELETE"})
+     * @Route("/admin/{id}", name="region_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Region $region): Response
     {
@@ -109,17 +110,24 @@ class RegionController extends AbstractController
         $server = $serverRepository->find($request->get('id'));
         $regions = $regionRepository->findByServer($server);
 
-        $data = [];
-        foreach($regions as $region){
-            $reg = [];
-            array_push($reg, $region->getX());
-            array_push($reg, $region->getY());
-            array_push($reg, $region->getTypeRegion()->getName());
-            array_push($data, $reg);
+        $data = $hexes = [];
+        foreach($regions as $index => $region){
+   
+            $hexes[$region->getId()]['q'] = $region->getX();
+            $hexes[$region->getId()]['r'] = $region->getY();
+            $hexes[$region->getId()]['type'] = $region->getTypeRegion()->getName();
+            $hexes[$region->getId()]['name'] = 0;
+            if($region->getStateRegion() !== null ){
+                $hexes[$region->getId()]['state'] = $region->getStateRegion()->getState()->getId();
+            }else{
+                $hexes[$region->getId()]['state'] = null;
+            }
+            
         }
-
+        $data['layout'] = "odd-r";
+        $data['hexes'] = $hexes;
         
-        $response->setData(['data' => $data]);
+        $response->setData($data);
 
 
         return $response;

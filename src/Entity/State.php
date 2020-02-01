@@ -15,7 +15,8 @@ class State
     public function __construct(){
 		$this->dateCreate = new \Datetime();
         $this->userCreator = new ArrayCollection();
-        $this->stateUsers = new ArrayCollection();		
+        $this->stateUsers = new ArrayCollection();
+        $this->stateRegions = new ArrayCollection();		
 	}
     
     
@@ -72,6 +73,11 @@ class State
      * @ORM\JoinColumn(nullable=false)
      */
     private $server;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\StateRegion", mappedBy="state")
+     */
+    private $stateRegions;
 
 
 
@@ -203,6 +209,37 @@ class State
     public function setServer(?Server $server): self
     {
         $this->server = $server;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|StateRegion[]
+     */
+    public function getStateRegions(): Collection
+    {
+        return $this->stateRegions;
+    }
+
+    public function addStateRegion(StateRegion $stateRegion): self
+    {
+        if (!$this->stateRegions->contains($stateRegion)) {
+            $this->stateRegions[] = $stateRegion;
+            $stateRegion->setState($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStateRegion(StateRegion $stateRegion): self
+    {
+        if ($this->stateRegions->contains($stateRegion)) {
+            $this->stateRegions->removeElement($stateRegion);
+            // set the owning side to null (unless already changed)
+            if ($stateRegion->getState() === $this) {
+                $stateRegion->setState(null);
+            }
+        }
 
         return $this;
     }

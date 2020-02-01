@@ -37,6 +37,16 @@ class Region
      */
     private $server;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\StateRegion", mappedBy="region", cascade={"persist", "remove"})
+     */
+    private $stateRegion;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $spawnable;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +96,35 @@ class Region
     public function setServer(?Server $server): self
     {
         $this->server = $server;
+
+        return $this;
+    }
+
+    public function getStateRegion(): ?StateRegion
+    {
+        return $this->stateRegion;
+    }
+
+    public function setStateRegion(StateRegion $stateRegion): self
+    {
+        $this->stateRegion = $stateRegion;
+
+        // set the owning side of the relation if necessary
+        if ($stateRegion->getRegion() !== $this) {
+            $stateRegion->setRegion($this);
+        }
+
+        return $this;
+    }
+
+    public function getSpawnable(): ?bool
+    {
+        return $this->spawnable;
+    }
+
+    public function setSpawnable(?bool $spawnable): self
+    {
+        $this->spawnable = $spawnable;
 
         return $this;
     }

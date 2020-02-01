@@ -16,6 +16,7 @@
                 <th>Id</th>
                 <th>X</th>
                 <th>Y</th>
+                <th>Spawnable</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -25,6 +26,7 @@
                 <td>{{ region.id }}</td>
                 <td>{{ region.x }}</td>
                 <td>{{ region.y }}</td>
+                <td>{{ region.spawnable }}</td>
                 <td>
                     <a href="{{ path('region_show', {'id': region.id}) }}"><span class="icon-Fleche btn-next"></span></a>
                 </td>

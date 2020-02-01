@@ -3,7 +3,7 @@
 .token {
 	font-family: serif;
 	border-radius: 100%;
-	background-color: wheat;
+	/*background-color: wheat*/;
 	width: 4em;
 	height: 4em;
 	color: black;
@@ -13,12 +13,13 @@
 .token.token-red { color: crimson; }
 .token .id, .token .odds { font-size: 0.5em; }
 .token .dice { font-size: 2em; }
-.hills { background-color: #c8906e; }
-.pasture { background-color: #b5c881; }
-.mountains { background-color: #778088; }
-.fields { background-color: #e9b66c; }
-.forest { background-color: #55855f; }
-.desert { background-color: #f5dcad; }
+.Hill { background-color: #95b04d; }
+.Plain { background-color: #b5c881; }
+.Mountain { background-color: #778088; }
+.Fields { background-color: #e9b66c; }
+.Forest { background-color: #37563e; }
+.Desert { background-color: #f5dcad; }
+.Water { background-color: #187199; }
 
 
 
@@ -93,10 +94,16 @@
 
 .hex {
 	cursor: pointer;
+    background-color: transparent;
 }
+
+.hexinner{
+    margin:0;
+}
+
 .hex:hover .hexinner, 
 .hex:focus .hexinner {
-	background: black!important;
+	background: rgb(200,200,200,1) !important;
 	color: white;
 }
 

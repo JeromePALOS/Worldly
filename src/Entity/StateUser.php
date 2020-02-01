@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class StateUser
 {
     public function __construct(){
-		$this->dateCreate = new \Datetime();		
+		$this->dateCreate = new \Datetime();	
 	}
     
     /**
@@ -36,6 +36,7 @@ class StateUser
      * @ORM\Column(type="datetime")
      */
     private $dateCreate;
+
 
     public function getId(): ?int
     {
@@ -77,4 +78,6 @@ class StateUser
 
         return $this;
     }
+
+
 }

@@ -2,40 +2,38 @@
 
 namespace App\Form;
 
+use App\Entity\StateRegion;
+use App\Entity\State;
 use App\Entity\Region;
-use App\Entity\TypeRegion;
-use App\Entity\Server;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class RegionType extends AbstractType
+class StateRegionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('x')
-            ->add('y')
-            
-            
-            ->add('TypeRegion', EntityType::class, [
-                'class' => TypeRegion::class,
+            ->add('state', EntityType::class, [
+                'class' => State::class,
                 'choice_label' => 'name',
             ])
-            ->add('server', EntityType::class, [
-                'class' => Server::class,
-                'choice_label' => 'name',
+            ->add('region', EntityType::class, [
+                'class' => Region::class,
+                'choice_label' => function ($region) {
+                    return '(' . $region->getY() . ', ' . $region->getX() . ')';
+                },
+                'placeholder' => '(x, y)'
             ])
-            ->add('spawnable')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Region::class,
+            'data_class' => StateRegion::class,
         ]);
     }
 }

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StateRegion{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-sm-row flex-column">
+        <div class="mr-auto p-2">
+            <a class="btn-action btn-back" href="{{ path('state_region_index') }}"><span class="icon-Back"></span></a>
+            <h1>StateRegion</h1>
+        </div>
+        <div class="p-2"><a class="btn-action" href="{{ path('state_region_edit', {'id': state_region.id}) }}"><span class="icon icon-Pen"></span> Edit</a></div>
+        <div class="p-2">{{ include('state_region/_delete_form.html.twig') }}</div>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ state_region.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+
+    
+
+    
+{% endblock %}

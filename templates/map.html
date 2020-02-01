@@ -22,27 +22,7 @@
     
 </div>
     <div id="hexmap" class="hexmap" data-zoom="1">
-        <code>
-        {
-            "layout":"odd-r",
-            "hexes": {
-                "0":{"q":0,     "r":0,    "name":"0-0",    "type":"mountains",      "state":1       },
-                "1":{"q":1,     "r":0,    "name":"1-0",    "type":"desert",         "state":1       },
-                "2":{"q":2,     "r":0,    "name":"2-0",    "type":"fields",         "state":2       },
-                "3":{"q":0,     "r":1,    "name":"0-1",    "type":"forest",         "state":2       },
-                "4":{"q":1,     "r":1,    "name":"1-1",    "type":"mountains",      "state":2       },
-                "5":{"q":2,     "r":1,    "name":"2-1",    "type":"mountains",      "state":2       },
-                "6":{"q":0,     "r":2,    "name":"0-2",    "type":"mountains",      "state":1       },
-                "7":{"q":1,     "r":2,    "name":"1-2",    "type":"mountains",      "state":1       },
-                "8":{"q":2,     "r":2,    "name":"2-2",    "type":"mountains",      "state":2       },
-                "9":{"q":10,     "r":10,    "name":"2-2",    "type":"mountains",      "state":2       },
-                "100":{"q":10,     "r":10,    "name":"2-2",    "type":"mountains",      "state":1       },
-                "101":{"q":100,     "r":30,    "name":"2-2",    "type":"mountains",      "state":1       },
-                "102":{"q":-5,     "r":-5,    "name":"2-2",    "type":"mountains",      "state":1       }
 
-            }
-        }
-        </code>
 
 
     </div>
@@ -52,19 +32,22 @@
 
 
 <script>
+    function goHexmap(){
 S(document).ready(function(){
 	var hexmap = S.hexmap('hexmap');
 	hexmap.positionHexes();//.resize();
 
 	hexmap.setContent(function(id,hex){
 		// Build the circular token that sits on a hex
-
-		str = '<div class="token'+((hex.state==2 || hex.dice == 6) ? ' token-red':'')+'">';
-            str += '<div class="id">'+' '+hex.q+','+hex.r+'</div>'; //coor
-            str += '<div class="dice">'+hex.name+'</div>'; //nom
-            str += '<div class="odds">'+id+ '</div>'; 
-		str += '</div>';
-
+        
+            str = '<div class="token'+((hex.state==2 || hex.dice == 6) ? ' token-red':'')+'">';
+            if(hex.type !== "Water"){
+                str += '<div class="id">'+' '+hex.q+','+hex.r+'</div>'; //coor
+                str += '<div class="dice">'+hex.name+'</div>'; //nom
+                str += '<div class="odds">'+id+ '</div>'; 
+             }
+            str += '</div>';
+       
 		return str;
 	});
 	
@@ -111,5 +94,17 @@ S(document).ready(function(){
     
     
 });
-
+    }
 </script>
+
+
+        <!--code>
+        {
+            "layout":"odd-r",
+            "hexes": {
+                "0":{"q":0,     "r":0,    "name":"0-0",    "type":"mountains",      "state":1       },
+                "1":{"q":1,     "r":0,    "name":"1-0",    "type":"desert",         "state":1       }
+
+            }
+        }
+        </code-->

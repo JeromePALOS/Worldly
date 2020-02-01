@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StateRegion index{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-sm-row flex-column">
+        <div class="mr-auto p-2">
+            <h1>StateRegion</h1>
+        </div>
+        <div class="p-2"><a class="btn-action" href="{{ path('state_region_new') }}"><span class="icon icon-Add-2"></span> New StateRegion</a></div>
+    </div>
+
+    <table class="table table-hover table-responsive-md">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>State</th>
+                <th>Region</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for state_region in state_regions %}
+            <tr>
+                <td>{{ state_region.id }}</td>
+                <td>{{ state_region.state.name }}</td>
+                <td>{{ state_region.region.x }}, {{ state_region.region.y }}</td>
+                <td>
+                    <a href="{{ path('state_region_show', {'id': state_region.id}) }}"><span class="icon-Fleche btn-next"></span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

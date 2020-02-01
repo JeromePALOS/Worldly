@@ -66,16 +66,21 @@
 {% block javascripts %}
 {{ parent() }}
 <script>
-    
+
     $.ajax({
         url: "{{ path('region_map_json') }}",
         method: "post",
         data: { 'id': {{app.user.server.id}} }
     }).done(function(json){
         console.log(json);
+        var j =JSON.stringify(json);
         
-        
+        var code1 = document.createElement('code');
+        code1.appendChild(document.createTextNode(j));
+        document.getElementById('hexmap').appendChild(code1);
+        goHexmap();
         
     });
+
 </script>    
 {% endblock %}
