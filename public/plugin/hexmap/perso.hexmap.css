@@ -10,7 +10,7 @@
 	display: table-cell;
 	vertical-align: middle;
 }
-.token.token-red { color: crimson; }
+.token.token-red { background-color: crimson; }
 .token .id, .token .odds { font-size: 0.5em; }
 .token .dice { font-size: 2em; }
 .Hill { background-color: #95b04d; }
@@ -98,7 +98,7 @@
 }
 
 .hexinner{
-    margin:0;
+    margin:1px;
 }
 
 .hex:hover .hexinner, 

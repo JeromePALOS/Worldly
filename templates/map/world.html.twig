@@ -1,0 +1,105 @@
+
+
+
+{% block stylesheets %}
+
+<!-- Plugin Map -->
+<link rel="stylesheet" href="/plugin/hexmap/stuquery.hexmap.css">
+<link rel="stylesheet" href="/plugin/hexmap/perso.hexmap.css">
+
+{% endblock %}
+
+
+{% block body %}
+<section class="area-map" id="area-map">
+    <div id="map-info">
+    
+
+    Click on a region
+    
+    
+
+    
+</div>
+    <div id="hexmap" class="hexmap" data-zoom="1">
+
+
+
+    </div>
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+
+
+<script type="text/javascript" src="/plugin/hexmap/stuquery.min.js"></script>
+<script type="text/javascript" src="/plugin/hexmap/stuquery.hexmap.js"></script>
+
+
+<!-- Plugin Zoom -->
+<script src='/plugin/panzoom/panzoom.min.js' ></script>
+
+
+
+
+
+<script>
+    function goHexmap(){
+
+            var hexmap = S.hexmap('hexmap');
+            hexmap.positionHexes();
+
+            return hexmap;
+        }
+                  
+
+    
+    
+	
+function zoomPan(id = 100){
+    S(document).ready(function(){
+        //Zoom and move
+        var x = 0; 
+        var y = 0;
+        var z = 0.5;
+        var region = document.querySelectorAll(".hex[data-id='"+id+"']");
+
+        if(region.length){
+            x = region[0].offsetLeft - document.getElementById('area-map').clientWidth;
+            y = region[0].offsetTop - document.getElementById('area-map').clientHeight;
+            z = 0.5;
+        }
+
+        var zoom = panzoom(document.getElementById('hexmap'), {
+            maxZoom: 4,
+            minZoom: 0.2,
+        });
+
+        zoom.zoomAbs(
+              -x, // initial x position
+              -y, // initial y position
+              z // zoom
+        );
+    });
+}
+    
+    
+
+    
+</script> 
+       <!--code>
+        {
+            "layout":"odd-r",
+            "hexes": {
+                "0":{"q":0,     "r":0,    "name":"0-0",    "type":"mountains",      "state":1       },
+                "1":{"q":1,     "r":0,    "name":"1-0",    "type":"desert",         "state":1       }
+
+            }
+        }
+        </code-->
+
+{% endblock %}
+
+
+ 

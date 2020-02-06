@@ -1,0 +1,12 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% include "@FOSUser/Registration/register_content.html.twig" %}
+{% endblock fos_user_content %}
+
+
+{% block lien %}
+
+    <a class="btn-action" href="{{path('fos_user_security_login')}}">Login</a>
+{% endblock lien %}

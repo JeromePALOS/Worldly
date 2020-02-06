@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}State index{% endblock %}
+
+{% block body %}
+
+<div class="d-flex flex-sm-row flex-column">
+    <div class="mr-auto p-2">
+        <h1>Worldly</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-xs-12">
+        <div class="block-black">
+            <div class="d-flex flex-sm-row flex-column block-title">
+                <div class="mr-auto p-2">
+                    <h2>Awaiting action</h2>
+                </div>
+            </div>
+            <ol>
+            {% for action in actions %}
+                <li>
+                    <p>{{ action.title }}</p>
+                    <a class="btn-action" href="{{action.link}}">{{ action.btn }}</a>
+                </li>   
+            {% else %}
+                <p>no action found</p>
+            {% endfor %}
+            </ol>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

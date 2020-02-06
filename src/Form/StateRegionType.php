@@ -15,11 +15,14 @@ class StateRegionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        if($options['role'] == 1){
+            $builder
+                ->add('state', EntityType::class, [
+                    'class' => State::class,
+                    'choice_label' => 'name',
+                ]);
+        }
         $builder
-            ->add('state', EntityType::class, [
-                'class' => State::class,
-                'choice_label' => 'name',
-            ])
             ->add('region', EntityType::class, [
                 'class' => Region::class,
                 'choice_label' => function ($region) {
@@ -32,6 +35,13 @@ class StateRegionType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
+        $resolver->setDefined(['role']);
+               
+        $resolver->setDefaults([
+            'role'     => 0,
+        ]);
+
+        
         $resolver->setDefaults([
             'data_class' => StateRegion::class,
         ]);

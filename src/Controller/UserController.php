@@ -14,13 +14,11 @@ use Symfony\Component\Finder\Exception\AccessDeniedException;
 
 use App\Service\GrantedService;
 
-/**
- * @Route("/user")
- */
+
 class UserController extends AbstractController
 {
     /**
-     * @Route("/admin/", name="user_index", methods={"GET"})
+     * @Route("/user/admin/", name="user_index", methods={"GET"})
      */
     public function index(GrantedService $grantedService): Response
     {    
@@ -40,15 +38,18 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="user_new", methods={"GET"})
+     * @Route("/user/new", name="user_new", methods={"GET"})
      */
     public function new(Request $request): Response
     {
         throw new AccessDeniedException('Page under construction');
     }
     
+
+    
+    
     /**
-     * @Route("/{id}", name="user_show", methods={"GET"})
+     * @Route("/user/{id}", name="user_show", methods={"GET"})
      */
     public function show(User $user): Response
     {
@@ -58,7 +59,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/admin/{id}/edit", name="user_edit", methods={"GET","POST"})
+     * @Route("/user/admin/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
     public function edit(GrantedService $grantedService, Request $request, User $user): Response
     {
@@ -79,7 +80,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="user_delete", methods={"DELETE"})
+     * @Route("/user/{id}", name="user_delete", methods={"DELETE"})
      */
     public function delete(GrantedService $grantedService, Request $request, User $user): Response
     {

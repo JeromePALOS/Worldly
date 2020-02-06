@@ -9,16 +9,16 @@
         
         <link rel="stylesheet"  href="{{ asset('css/icomoon/style.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ asset('css/general.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/nav.css') }}" />
+
         
 
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {{ render(controller('App\\Controller\\NavigatorController::nav',  { 'route':  path(app.request.get('_route'), app.request.get('_route_params')) }) ) }}
-        <main class="main-content container-fluid">
+       
+
             {% block body %}{% endblock %}
-        </main>
+
         
         
     <script src="/plugin/jquery/jquery-3.4.1.js"></script>

@@ -17,7 +17,7 @@
     
 	<div class="menu">
 		<div class="menu-group navbar-nav">
-            <a href="/user/{{ app.user.id }}" class=" nav-item menu-item {% if route == '/user/' ~ app.user.username %}current{% endif %}" aria-label="Profil" title="Profil">
+            <a href="/user/{{ app.user.id }}" class=" nav-item menu-item {% if route == '/user/' ~ app.user.id %}current{% endif %}" aria-label="Profil" title="Profil">
                 <i class="menu-icon icon-Person" aria-hidden="true"></i>
             </a>
 			<a href="/state" class="menu-item {% if route == '/state/' %}current{% endif %}" aria-label="World" title="World">
@@ -26,12 +26,14 @@
 		</div>
         
 		<div class="menu-group navbar-nav" id="country">
-            {% if menu is defined and menu.states is defined %}
-            {% for state in menu.states %}
-                <a href="/state/{{ state.id }}" class="nav-item menu-item {% if route == '/state/' ~state.id %}current{% endif %}" aria-label="P{{ state.name }} state" title="{{ state.name }} | State">
+            {% if menu is defined and menu.stateUsers is defined %}
+            {% for stateUser in menu.stateUsers %}
+                <a href="/state/{{ stateUser.state.id }}" class="nav-item menu-item {% if route == '/state/' ~stateUser.state.id %}current{% endif %}" aria-label="P{{ stateUser.state.name }} state" title="{{ stateUser.state.name }} | State">
                     <i class="menu-icon icon-Country" aria-hidden="true"></i>
                 </a>
             {% endfor %}
+
+
             {% endif %}
 
 		</div>

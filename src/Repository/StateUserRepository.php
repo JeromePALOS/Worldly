@@ -18,6 +18,23 @@ class StateUserRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, StateUser::class);
     }
+    
+   /**
+    * @return StateUser[] Returns an array of StateUser objects
+    */
+    public function findByUserAndState($user, $state)
+    {
+        return $this->createQueryBuilder('su')
+            ->andWhere('su.user = :user')
+            ->setParameter('user', $user)
+            ->andWhere('su.state = :state')
+            ->setParameter('state', $state)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }   
+    
+    
 
     // /**
     //  * @return StateUser[] Returns an array of StateUser objects

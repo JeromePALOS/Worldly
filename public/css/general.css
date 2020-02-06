@@ -8,9 +8,24 @@ option, input{
 
 body{
         background-color: #3c4a54;
+
 }
 
+.block-black{
+         background-color: #39464f;
+    padding: 10px 10px 30px 10px;
+    box-shadow: 1px 2px 2px black;
+    border: 1px solid black;
+    border-radius: 5px;
+}
 
+h2{
+    font-size: 1.5rem;
+}
+.block-title{
+    border-bottom: 1px solid white;
+    
+}
 a:hover{
         text-decoration: none;
 }
@@ -28,7 +43,7 @@ h1{
 
 /*********** Btn ***********/
 .btn-action{
-    margin-top :   5px;
+
     background:    #232c32;
     border-radius: 4px;
     padding:       4px 60px 4px 60px;

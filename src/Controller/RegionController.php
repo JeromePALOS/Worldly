@@ -55,7 +55,7 @@ class RegionController extends AbstractController
     }
 
     /**
-     * @Route("/admin/{id}", name="region_show", methods={"GET"})
+     * @Route("/{id}", name="region_show", methods={"GET"})
      */
     public function show(Region $region): Response
     {
@@ -100,38 +100,7 @@ class RegionController extends AbstractController
     
     
         
-    /**
-     * @Route("/map", name="region_map_json", methods={"GET","POST"})
-     */
-    public function mapJson(Request $request, RegionRepository $regionRepository, ServerRepository $serverRepository): Response
-    {
-        $response = new JsonResponse();
-        
-        $server = $serverRepository->find($request->get('id'));
-        $regions = $regionRepository->findByServer($server);
 
-        $data = $hexes = [];
-        foreach($regions as $index => $region){
-   
-            $hexes[$region->getId()]['q'] = $region->getX();
-            $hexes[$region->getId()]['r'] = $region->getY();
-            $hexes[$region->getId()]['type'] = $region->getTypeRegion()->getName();
-            $hexes[$region->getId()]['name'] = 0;
-            if($region->getStateRegion() !== null ){
-                $hexes[$region->getId()]['state'] = $region->getStateRegion()->getState()->getId();
-            }else{
-                $hexes[$region->getId()]['state'] = null;
-            }
-            
-        }
-        $data['layout'] = "odd-r";
-        $data['hexes'] = $hexes;
-        
-        $response->setData($data);
-
-
-        return $response;
-	}
     
     
 }

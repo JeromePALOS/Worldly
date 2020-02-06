@@ -440,6 +440,7 @@ console.log(this.wide,this.wide/this.hex.wide,maxq,minq,this.hex.wide)
 		this.setContent = function(html){ this.el.find('.hexcontent').html(html); }
 		this.setClass = function(c){ this.el.find('.hexinner').attr('class','').addClass('hexinner'+(c ? ' '+c:'')); }
 		this.setBorder = function(html){ this.el.prepend(html); }
+		this.setMargin = function(unite){this.el.find('.hexinner').css({'margin':'5px !important'}); }
 
 		return this;
 	}
@@ -513,13 +514,13 @@ console.log(this.wide,this.wide/this.hex.wide,maxq,minq,this.hex.wide)
             for(let j = start; j <= end; j++ ){
 
                 if(this.hexes[i].state !== this.hexes[j].state){
-
+                    var nbr = 0;
                     if(this.hexes[i].q + 1 == this.hexes[j].q && this.hexes[i].r == this.hexes[j].r){
                         this.hexes[i].setBorder('<div class="border border-2"></div>'); //2
-
+                        nbr+=1;
                     }else if(this.hexes[i].q - 1 == this.hexes[j].q && this.hexes[i].r == this.hexes[j].r){
                         this.hexes[i].setBorder('<div class="border border-5"></div>'); //5
-
+                        nbr+=1;
                     }
 
 
@@ -527,32 +528,40 @@ console.log(this.wide,this.wide/this.hex.wide,maxq,minq,this.hex.wide)
                     if(this.hexes[i].r%2 !== 0){
                         if(this.hexes[i].q + 1 == this.hexes[j].q && this.hexes[i].r + 1 == this.hexes[j].r){
                             this.hexes[i].setBorder('<div class="border border-1"></div>'); //1
-
+                            nbr+=1;
                         }else if(this.hexes[i].q == this.hexes[j].q && this.hexes[i].r - 1 == this.hexes[j].r){
                             this.hexes[i].setBorder('<div class="border border-4"></div>'); //4
-
+                            nbr+=1;
                         }else if(this.hexes[i].q == this.hexes[j].q && this.hexes[i].r + 1 == this.hexes[j].r){
                             this.hexes[i].setBorder('<div class="border border-6"></div>'); //6
-
+                            nbr+=1;
                         }else if(this.hexes[i].q + 1 == this.hexes[j].q && this.hexes[i].r - 1 == this.hexes[j].r){
                             this.hexes[i].setBorder('<div class="border border-3"></div>'); //3
+                            nbr+=1;                   
                         }
 
 
                     }else{
                         if(this.hexes[i].q == this.hexes[j].q && this.hexes[i].r +1 == this.hexes[j].r){
                             this.hexes[i].setBorder('<div class="border border-1"></div>'); //1
-
+                            nbr+=1;
                         }else if(this.hexes[i].q - 1 == this.hexes[j].q && this.hexes[i].r - 1 == this.hexes[j].r){
                             this.hexes[i].setBorder('<div class="border border-4"></div>'); //4
-
+                            nbr+=1;
                         }else if(this.hexes[i].q - 1 == this.hexes[j].q && this.hexes[i].r + 1 == this.hexes[j].r){
                             this.hexes[i].setBorder('<div class="border border-6"></div>'); //6
-
+                            nbr+=1;
                         }else if(this.hexes[i].q == this.hexes[j].q && this.hexes[i].r - 1 == this.hexes[j].r){
                             this.hexes[i].setBorder('<div class="border border-3"></div>'); //3
+                            nbr+=1;                  
                         }
                     }
+                    
+                    
+                    if(nbr > 0){
+                        
+                    }
+                    
                 }
             }
                 
