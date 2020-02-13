@@ -4,15 +4,23 @@
 
 {% block body %}
 
-    <div class="d-flex flex-sm-row flex-column">
-        <div class="mr-auto p-2">
-            <h1>World Map</h1>
-        </div>
-        
-    </div>
-    <div style="height: 80vh;">
-        {% include 'map/world.html.twig' %}
-    </div>
+  <ul class="pagination">
+
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#"><span class="icon-Lightning"></span></a></li>
+    <li class="page-item"><a class="page-link" href="#"><span class="icon-Cross"></span></a></li>
+    <li class="page-item"><a class="page-link" href="#"><span class="icon-Education"></span></a></li>
+    <li class="page-item"><a class="page-link" href="#"><span class="icon-Rail"></span></a></li>
+    <li class="page-item"><a class="page-link" href="#"><span class="icon-Army"></span></a></li>
+    <li class="page-item"><a class="page-link" href="#"><span class="icon-Wheat"></span></a></li>
+    <li class="page-item"><a class="page-link" href="#"><span class="icon-Culture"></span></a></li>
+    <li class="page-item"><a class="page-link" href="#"><span class="icon-Science"></span></a></li>
+    <li class="page-item"><a class="page-link" href="#"><span class="icon-Euro"></span></a></li>
+  </ul>
+
+
+
+
     <div class="d-flex flex-sm-row flex-column">
         <div class="mr-auto p-2">
             <h1>State</h1>
@@ -62,87 +70,4 @@
 
     
 
-{% endblock %}
-{% block javascripts %}
-{{ parent() }}
-<script>
-
-    $.ajax({
-        url: "{{ path('map_world_json') }}",
-        method: "post",
-        data: { 'id': {{app.user.server.id}} }
-    }).done(function(json){
-
-        var j =JSON.stringify(json);
-        
-        var code1 = document.createElement('code');
-        code1.appendChild(document.createTextNode(j));
-        document.getElementById('hexmap').appendChild(code1);
-        var hexmap = goHexmap();
-                    
-        hexmap.setClass(function(id,hex){
-            return hex.type;
-        });
-        
-        hexmap.setContent(function(id,hex){
-            // Build the circular token that sits on a hex
-
-                str = '<div class="token">';
-
-                str += '</div>';
-
-            return str;
-        });
-
-        hexmap.setBorder(function(id,hex){
-            return hex.type;
-        });
-
-            //Event
-        hexmap.on('click',function(e){
-            
-            var info = document.getElementById('map-info');
-            info.innerHTML ='<div class="progress"><div class="progress-bar-animated progress-bar-striped bg-secondary" style="width:100%"></div></div>';
-            
-            
-            $.ajax({
-                url: "{{ path('map_region_info_json') }}",
-                method: "post",
-                data: { 'id': e.hex.id }
-            }).done(function(json){
-                while (info.firstChild) {
-                    info.removeChild(info.firstChild);
-                }
-
-                //coor
-                var p = document.createElement('p');
-                p.appendChild(document.createTextNode('['+e.hex.r+','+e.hex.q+']'));
-                var p1 = document.createElement('p');
-                p1.appendChild(document.createTextNode('State : ' + json['state']['name'] ));
-                
-                info.appendChild(p);
-                info.appendChild(p1);
-                
-                if(json['state']['stateUser']){
-                    var a = document.createElement('a');
-                    
-                    
-                    var url = '{{ path("region_show", {"id": "region_id"}) }}'; 
-                    url = url.replace("region_id", json['region']['id']);
-                    
-                    a.setAttribute('href', url);
-                    a.classList.add('btn-action');
-                    a.appendChild(document.createTextNode('See this region'));
-                    info.appendChild(a);
-                }
-                
-                
-            });
-            
-        });
-    
-        zoomPan();
-    });
-
-</script>    
 {% endblock %}

@@ -12,23 +12,24 @@
 
 <div class="row">
     <div class="col-md-6 col-xs-12">
-        <div class="block-black">
-            <div class="d-flex flex-sm-row flex-column block-title">
-                <div class="mr-auto p-2">
-                    <h2>Awaiting action</h2>
-                </div>
-            </div>
-            <ol>
+        
+            
             {% for action in actions %}
-                <li>
+                <div class="d-flex flex-sm-row flex-column block-title">
+                    <div class="mr-auto p-2">
+                        <h2>Awaiting action</h2>
+                    </div>
+                </div>
+                <div class="block-black">
                     <p>{{ action.title }}</p>
                     <a class="btn-action" href="{{action.link}}">{{ action.btn }}</a>
-                </li>   
+                </div>   
+                    
             {% else %}
                 <p>no action found</p>
             {% endfor %}
-            </ol>
-        </div>
+            
+        
     </div>
 
 

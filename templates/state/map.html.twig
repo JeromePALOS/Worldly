@@ -1,26 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Your first region{% endblock %}
+{% block title %}State index{% endblock %}
 
 {% block body %}
-    <div class="d-flex flex-sm-row flex-column">
-        <div class="mr-auto p-2">
-            <h1>Your first region</h1>
-        </div>
-    </div>
 
-    <div style="height: 80vh;">
+
+    <div style="height: 90vh">
         {% include 'map/world.html.twig' %}
     </div>
 
+
+
+    
+
 {% endblock %}
-
-
-
-
-
-
-
 {% block javascripts %}
 {{ parent() }}
 <script>
@@ -45,8 +38,8 @@
         hexmap.setContent(function(id,hex){
             // Build the circular token that sits on a hex
 
+                str = '<div class="token">';
 
-                str = '<div class="token'+((hex.spawnable && hex.state == null) ? ' token-red':'')+'">';
                 str += '</div>';
 
             return str;
@@ -71,7 +64,7 @@
                 while (info.firstChild) {
                     info.removeChild(info.firstChild);
                 }
-                
+
                 //coor
                 var p = document.createElement('p');
                 p.appendChild(document.createTextNode('['+e.hex.r+','+e.hex.q+']'));
@@ -84,27 +77,26 @@
                     info.appendChild(p1);
                 }
                 
-                if(json['region']['spawnable'] && (json['state']['id'] == undefined || json['state']['id'] == null)){
-                    var form = document.createElement('form');
-                    form.setAttribute('method', 'post')
-                    var submit = document.createElement('input');
-                    submit.setAttribute('type', 'submit');
-                    submit.classList.add('btn-action');
-                    submit.setAttribute('value', 'Found my state here');
-                    form.appendChild(submit);
-
                 
-                    var input2 = document.createElement('input');
-                    input2.setAttribute('name', 'region');
-                    input2.setAttribute('value', e.hex.id);
-                    input2.setAttribute('type', 'hidden');
-
-                    form.appendChild(input2);
-                    info.appendChild(form);
+                if(json['state']['stateUser']){
+                    var a = document.createElement('a');
                     
+                    
+                    var url = '{{ path("region_show", {"id": "region_id"}) }}'; 
+                    url = url.replace("region_id", json['region']['id']);
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    a.setAttribute('href', url);
+                    a.classList.add('btn-action');
+                    a.appendChild(document.createTextNode('See this region'));
+                    info.appendChild(a);
                 }
-                
-                
                 
                 
             });

@@ -72,7 +72,7 @@ nav{
 }
 
 .menu-bottom {
-    font-size: 2.4rem;
+    font-size: 1.4rem;
     box-shadow: 0 -0.2rem 0.2rem #36424b;
     z-index: 1;
 }
@@ -81,7 +81,7 @@ nav{
 
 
 .menu-item {
-    height: 4rem;
+    height: 3.5rem;
     flex-shrink: 0;
     width: 100%;
     vertical-align: middle;
@@ -110,7 +110,7 @@ nav{
 .menu-icon{
     font-size: 2em;
     color: #fff;
-    line-height: 1.5;
+    
     
 }
 .menu-logo{

@@ -41,7 +41,7 @@ class NavigatorController extends AbstractController
     
     
     /**
-     * @Route("/", name="nav_index", methods={"GET"})
+     * @Route("/", name="homepage", methods={"GET"})
      */
     public function index(StateRepository $stateRepository, UserRepository $userRepository): Response
     {

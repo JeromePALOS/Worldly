@@ -513,36 +513,83 @@ console.log(this.wide,this.wide/this.hex.wide,maxq,minq,this.hex.wide)
             
             
             
-            var v= [];
-            v[2] = this.hexes.find(hex => hex.r == this.hexes[i].r && hex.q +1 == this.hexes[i].q);
-            v[5] = this.hexes.find(hex => hex.r == this.hexes[i].r && hex.q +1 == this.hexes[i].q);
+            var v
+            var v[2] = this.hexes.find(hex => hex.r == this.hexes[i].r && hex.q +1 == this.hexes[i].q);
+            var v[5] = this.hexes.find(hex => hex.r == this.hexes[i].r && hex.q +1 == this.hexes[i].q);
             
             if(this.hexes[i].r%2 !== 0){
-                v[1] = this.hexes.find(hex => hex.r + 1 == this.hexes[i].r && hex.q == this.hexes[i].q);
-                v[6] = this.hexes.find(hex => hex.r + 1 == this.hexes[i].r && hex.q - 1 == this.hexes[i].q);
-                v[3] = this.hexes.find(hex => hex.r - 1 == this.hexes[i].r && hex.q == this.hexes[i].q);
-                v[4] = this.hexes.find(hex => hex.r - 1 == this.hexes[i].r && hex.q - 1 == this.hexes[i].q);
+                var v[1] = this.hexes.find(hex => hex.r + 1 == this.hexes[i].r && hex.q == this.hexes[i].q);
+                var v[6] = this.hexes.find(hex => hex.r + 1 == this.hexes[i].r && hex.q - 1 == this.hexes[i].q);
+                var v[3] = this.hexes.find(hex => hex.r - 1 == this.hexes[i].r && hex.q == this.hexes[i].q);
+                var v[4] = this.hexes.find(hex => hex.r - 1 == this.hexes[i].r && hex.q - 1 == this.hexes[i].q);
             }else{
-                v[1] = this.hexes.find(hex => hex.r + 1 == this.hexes[i].r && hex.q + 1 == this.hexes[i].q);
-                v[6] = this.hexes.find(hex => hex.r + 1 == this.hexes[i].r && hex.q == this.hexes[i].q);
-                v[3] = this.hexes.find(hex => hex.r - 1 == this.hexes[i].r && hex.q + 1 == this.hexes[i].q);
-                v[4] = this.hexes.find(hex => hex.r - 1 == this.hexes[i].r && hex.q == this.hexes[i].q);              
+                var v[1] = this.hexes.find(hex => hex.r + 1 == this.hexes[i].r && hex.q + 1 == this.hexes[i].q);
+                var v[6] = this.hexes.find(hex => hex.r + 1 == this.hexes[i].r && hex.q == this.hexes[i].q);
+                var v[3] = this.hexes.find(hex => hex.r - 1 == this.hexes[i].r && hex.q + 1 == this.hexes[i].q);
+                var v[4] = this.hexes.find(hex => hex.r - 1 == this.hexes[i].r && hex.q == this.hexes[i].q);              
             }
             
-            for(let i= 0; i < v.length; i++){
-                if(v[i] !== undefined && this.hexes[i].state !== v[i].state){
-                    v[i].setBorder('<div class="border border-'+i+'"></div>');
-                       
-                   
+            for(let i= 0; i < v.length(); i++){
+                console.log(v[i]);
+            }
+            
+            
+            
+            
+            
+            if( );
+
+                if(this.hexes[i].state !== this.hexes[j].state){
+                    var nbr = 0;
+                    if(this.hexes[i].q + 1 == this.hexes[j].q && this.hexes[i].r == this.hexes[j].r){
+                        this.hexes[i].setBorder('<div class="border border-2"></div>'); //2
+                        nbr+=1;
+                    }else if(this.hexes[i].q - 1 == this.hexes[j].q && this.hexes[i].r == this.hexes[j].r){
+                        this.hexes[i].setBorder('<div class="border border-5"></div>'); //5
+                        nbr+=1;
+                    }
+
+
+
+                    if(this.hexes[i].r%2 !== 0){
+                        if(this.hexes[i].q + 1 == this.hexes[j].q && this.hexes[i].r + 1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-1"></div>'); //1
+                            nbr+=1;
+                        }else if(this.hexes[i].q == this.hexes[j].q && this.hexes[i].r - 1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-4"></div>'); //4
+                            nbr+=1;
+                        }else if(this.hexes[i].q == this.hexes[j].q && this.hexes[i].r + 1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-6"></div>'); //6
+                            nbr+=1;
+                        }else if(this.hexes[i].q + 1 == this.hexes[j].q && this.hexes[i].r - 1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-3"></div>'); //3
+                            nbr+=1;                   
+                        }
+
+
+                    }else{
+                        if(this.hexes[i].q == this.hexes[j].q && this.hexes[i].r +1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-1"></div>'); //1
+                            nbr+=1;
+                        }else if(this.hexes[i].q - 1 == this.hexes[j].q && this.hexes[i].r - 1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-4"></div>'); //4
+                            nbr+=1;
+                        }else if(this.hexes[i].q - 1 == this.hexes[j].q && this.hexes[i].r + 1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-6"></div>'); //6
+                            nbr+=1;
+                        }else if(this.hexes[i].q == this.hexes[j].q && this.hexes[i].r - 1 == this.hexes[j].r){
+                            this.hexes[i].setBorder('<div class="border border-3"></div>'); //3
+                            nbr+=1;                  
+                        }
+                    }
+                    
+                    
+                    if(nbr > 0){
+                        
+                    }
+                    
                 }
             }
-            
-            
-            
-            
-            
-            
-            
                 
         }
 		return this;

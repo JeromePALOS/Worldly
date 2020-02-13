@@ -133,7 +133,7 @@ class StateRegionController extends AbstractController
 
             $entityManager->persist($stateRegion);
             $entityManager->flush();
-            return $this->redirectToRoute('nav_index');
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('state_region/spawnable.html.twig', [

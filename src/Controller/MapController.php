@@ -24,6 +24,30 @@ class MapController extends AbstractController
     
     
     
+    
+    /**
+     * @Route("/", name="map_index", methods={"GET"})
+     */
+    public function index(): Response
+    {
+
+        
+        return $this->render('map/index.html.twig', [
+
+        ]);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * @Route("/worldJson", name="map_world_json", methods={"GET","POST"})
      */

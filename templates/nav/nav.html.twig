@@ -20,7 +20,7 @@
             <a href="/user/{{ app.user.id }}" class=" nav-item menu-item {% if route == '/user/' ~ app.user.id %}current{% endif %}" aria-label="Profil" title="Profil">
                 <i class="menu-icon icon-Person" aria-hidden="true"></i>
             </a>
-			<a href="/state" class="menu-item {% if route == '/state/' %}current{% endif %}" aria-label="World" title="World">
+			<a href="/map" class="menu-item {% if route == '/state/' %}current{% endif %}" aria-label="World" title="World">
                 <i class="menu-icon icon-Map" aria-hidden="true"></i>
             </a>
 		</div>
@@ -31,10 +31,48 @@
                 <a href="/state/{{ stateUser.state.id }}" class="nav-item menu-item {% if route == '/state/' ~stateUser.state.id %}current{% endif %}" aria-label="P{{ stateUser.state.name }} state" title="{{ stateUser.state.name }} | State">
                     <i class="menu-icon icon-Country" aria-hidden="true"></i>
                 </a>
-            {% endfor %}
+
+                 <a href="/state/{{ stateUser.state.id }}" class="nav-item menu-item {% if route == '/state/' ~stateUser.state.id %}current{% endif %}" aria-label="P{{ stateUser.state.name }} state" title="{{ stateUser.state.name }} | State">
+                    <i class="menu-icon icon-Lightning" aria-hidden="true"></i>
+                </a>
+                <a href="/state/{{ stateUser.state.id }}" class="nav-item menu-item {% if route == '/state/' ~stateUser.state.id %}current{% endif %}" aria-label="P{{ stateUser.state.name }} state" title="{{ stateUser.state.name }} | State">
+                    <i class="menu-icon icon-Cross" aria-hidden="true"></i>
+                </a>
+                <a href="/state/{{ stateUser.state.id }}" class="nav-item menu-item {% if route == '/state/' ~stateUser.state.id %}current{% endif %}" aria-label="P{{ stateUser.state.name }} state" title="{{ stateUser.state.name }} | State">
+                    <i class="menu-icon icon-Education" aria-hidden="true"></i>
+                </a>
+                <a href="/state/{{ stateUser.state.id }}" class="nav-item menu-item {% if route == '/state/' ~stateUser.state.id %}current{% endif %}" aria-label="P{{ stateUser.state.name }} state" title="{{ stateUser.state.name }} | State">
+                    <i class="menu-icon icon-Rail" aria-hidden="true"></i>
+                </a>
+                <a href="/state/{{ stateUser.state.id }}" class="nav-item menu-item {% if route == '/state/' ~stateUser.state.id %}current{% endif %}" aria-label="P{{ stateUser.state.name }} state" title="{{ stateUser.state.name }} | State">
+                    <i class="menu-icon icon-Army" aria-hidden="true"></i>
+                </a>
+                <a href="/state/{{ stateUser.state.id }}" class="nav-item menu-item {% if route == '/state/' ~stateUser.state.id %}current{% endif %}" aria-label="P{{ stateUser.state.name }} state" title="{{ stateUser.state.name }} | State">
+                    <i class="menu-icon icon-Wheat" aria-hidden="true"></i>
+                </a>
+                <a href="/state/{{ stateUser.state.id }}" class="nav-item menu-item {% if route == '/state/' ~stateUser.state.id %}current{% endif %}" aria-label="P{{ stateUser.state.name }} state" title="{{ stateUser.state.name }} | State">
+                    <i class="menu-icon icon-Culture" aria-hidden="true"></i>
+                </a>
+                <a href="/state/{{ stateUser.state.id }}" class="nav-item menu-item {% if route == '/state/' ~stateUser.state.id %}current{% endif %}" aria-label="P{{ stateUser.state.name }} state" title="{{ stateUser.state.name }} | State">
+                    <i class="menu-icon icon-Science" aria-hidden="true"></i>
+                </a>
+                <a href="/state/{{ stateUser.state.id }}" class="nav-item menu-item {% if route == '/state/' ~stateUser.state.id %}current{% endif %}" aria-label="P{{ stateUser.state.name }} state" title="{{ stateUser.state.name }} | State">
+                    <i class="menu-icon icon-Euro" aria-hidden="true"></i>
+                </a>
+
+            
+              {% endfor %}
 
 
             {% endif %}
+                      
+            
+            
+            
+            
+            
+            
+            
 
 		</div>
 
@@ -57,7 +95,7 @@
 
 	<div class="menu-bottom">
 		<a class="menu-item" aria-label="More Options" title="More Options">
-            <i class="menu-icon icon-Menu" style="line-height: 0.5" aria-hidden="true"></i>
+            <i class="menu-icon icon-Menu1" style="line-height: 0.5" aria-hidden="true"></i>
         </a>
 
 	</div>

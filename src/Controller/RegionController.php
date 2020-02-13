@@ -45,7 +45,7 @@ class RegionController extends AbstractController
             $entityManager->persist($region);
             $entityManager->flush();
 
-            return $this->redirectToRoute('region_index');
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('region/new.html.twig', [
