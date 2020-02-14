@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Building{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-sm-row flex-column">
+        <div class="mr-auto p-2">
+            <a class="btn-action btn-back" href="{{ path('building_index') }}"><span class="icon-Back"></span></a>
+            <h1>Create new Building</h1>
+        </div>
+    </div>
+    
+
+    {{ include('building/_form.html.twig') }}
+
+{% endblock %}

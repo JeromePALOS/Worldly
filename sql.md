@@ -3,6 +3,7 @@ TRUNCATE TABLE `domain`;
 TRUNCATE TABLE `type_region`;
 TRUNCATE TABLE `region`;
 TRUNCATE TABLE `server`;
+TRUNCATE TABLE `building`;
 
 
 
@@ -22,7 +23,24 @@ VALUES
 ('12','Science')
 ;
 
-
+INSERT INTO building (id, domain_id, name, description, build_time, buildable)
+VALUES 
+('',    '2',      'Palace',             '',         '+P00Y00M01DT00H00M00S',         '0'),   
+('',    '3',      'Bank',               '',         '+P00Y00M01DT00H00M00S',         '0'),     
+('',    '4',      'Wood Central',       '',         '+P00Y00M01DT00H00M00S',         '1'),    
+('',    '4',      'Coal Central',       '',         '+P00Y00M01DT00H00M00S',         '1'),       
+('',    '4',      'Oil Central',        '',         '+P00Y00M01DT00H00M00S',         '1'),        
+('',    '4',      'Nuclear Central',    '',         '+P00Y00M01DT00H00M00S',         '1'),             
+('',    '5',      'Mine',               '',         '+P00Y00M01DT00H00M00S',         '1'), 
+('',    '6',      'Barrack',            '',         '+P00Y00M01DT00H00M00S',         '1'), 
+('',    '7',      'Hospital',             '',         '+P00Y00M01DT00H00M00S',       '0'), 
+('',    '8',      'Airport',            '',         '+P00Y00M01DT00H00M00S',         '0'),             
+('',    '8',      'Harbor',             '',         '+P00Y00M01DT00H00M00S',         '0'),             
+('',    '9',      'School',             '',         '+P00Y00M01DT00H00M00S',         '0'), 
+('',    '10',      'Farm',             '',         '+P00Y00M01DT00H00M00S',         '0'), 
+('',    '11',      'Cinema',             '',         '+P00Y00M01DT00H00M00S',         '0'), 
+('',    '12',      'University',             '',         '+P00Y00M01DT00H00M00S',         '0')
+;
 
 INSERT INTO resource (id, domain_id, name, salable)
 VALUES 
@@ -53,6 +71,7 @@ VALUES
 ('',    '12',      'SciencePoint'                ,'0')
 
 ;
+
 
 
 

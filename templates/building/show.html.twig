@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Building{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-sm-row flex-column">
+        <div class="mr-auto p-2">
+            <a class="btn-action btn-back" href="{{ path('building_index') }}"><span class="icon-Back"></span></a>
+            <h1>Building</h1>
+        </div>
+        <div class="p-2"><a class="btn-action" href="{{ path('building_edit', {'id': building.id}) }}"><span class="icon icon-Pen"></span> Edit</a></div>
+        <div class="p-2">{{ include('building/_delete_form.html.twig') }}</div>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ building.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ building.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ building.description }}</td>
+            </tr>
+            <tr>
+                <th>BuildTime</th>
+                <td>{{ building.buildTime ? building.buildTime|date('%dj %Hh %im') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Buildable</th>
+                <td>{{ building.buildable }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+
+    
+
+    
+{% endblock %}

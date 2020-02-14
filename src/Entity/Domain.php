@@ -28,9 +28,15 @@ class Domain
      */
     private $resources;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Building", mappedBy="domain")
+     */
+    private $buildings;
+
     public function __construct()
     {
         $this->resources = new ArrayCollection();
+        $this->buildings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,6 +81,37 @@ class Domain
             // set the owning side to null (unless already changed)
             if ($resource->getDomain() === $this) {
                 $resource->setDomain(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Building[]
+     */
+    public function getBuildings(): Collection
+    {
+        return $this->buildings;
+    }
+
+    public function addBuilding(Building $building): self
+    {
+        if (!$this->buildings->contains($building)) {
+            $this->buildings[] = $building;
+            $building->setDomain($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBuilding(Building $building): self
+    {
+        if ($this->buildings->contains($building)) {
+            $this->buildings->removeElement($building);
+            // set the owning side to null (unless already changed)
+            if ($building->getDomain() === $this) {
+                $building->setDomain(null);
             }
         }
 

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Building index{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-sm-row flex-column">
+        <div class="mr-auto p-2">
+            <h1>Building</h1>
+        </div>
+        <div class="p-2"><a class="btn-action" href="{{ path('building_new') }}"><span class="icon icon-Add-2"></span> New Building</a></div>
+    </div>
+
+    <table class="table table-hover table-responsive-md">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>BuildTime</th>
+                <th>Buildable</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for building in buildings %}
+            <tr>
+                <td>{{ building.id }}</td>
+                <td>{{ building.name }}</td>
+                <td>{{ building.description }}</td>
+                <td>{{ building.buildTime ? building.buildTime|date('%dj %Hh %im') : '' }}</td>
+                <td>{{ building.buildable }}</td>
+                <td>
+                    <a href="{{ path('building_show', {'id': building.id}) }}"><span class="icon-Fleche btn-next"></span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
